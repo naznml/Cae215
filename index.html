@@ -1,1 +1,543 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAE Practice Tests — Super Short Exam Strategy</title>
 
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#ecfeff;
+  color:#172033;
+  line-height:1.6;
+  user-select:none;
+}
+.hero{
+  background:linear-gradient(135deg,#164e63,#0891b2,#14b8a6);
+  color:white;
+  text-align:center;
+  padding:42px 16px 32px;
+}
+.book{
+  display:inline-block;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.3);
+  padding:8px 14px;
+  border-radius:999px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+h1{margin:0;font-size:35px;line-height:1.15}
+.subtitle{max-width:850px;margin:12px auto 0;font-size:17px}
+.notice{
+  max-width:780px;
+  margin:18px auto 0;
+  background:#fef3c7;
+  color:#78350f;
+  border:2px solid #facc15;
+  border-radius:18px;
+  padding:14px;
+  font-weight:700;
+}
+.notice small{display:block;font-weight:500;margin-top:5px}
+.source{
+  max-width:780px;
+  margin:10px auto 0;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:16px;
+  padding:11px;
+  font-size:14px;
+}
+.nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(255,255,255,.96);
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:10px;
+  border-bottom:1px solid #a5f3fc;
+}
+.nav::-webkit-scrollbar{display:none}
+.nav a{
+  flex:0 0 auto;
+  text-decoration:none;
+  background:#ecfeff;
+  color:#155e75;
+  border:1px solid #67e8f9;
+  border-radius:999px;
+  padding:7px 12px;
+  font-weight:800;
+  font-size:13px;
+}
+.wrap{max-width:1050px;margin:28px auto 60px;padding:0 14px}
+.card{
+  background:white;
+  border:1px solid #a5f3fc;
+  border-radius:24px;
+  padding:22px;
+  margin-bottom:26px;
+  box-shadow:0 14px 34px rgba(15,23,42,.09);
+  scroll-margin-top:80px;
+}
+h2{margin:0;color:#155e75;font-size:25px}
+.desc{
+  margin-top:10px;
+  background:#ecfeff;
+  border-left:5px solid #06b6d4;
+  border-radius:12px;
+  padding:10px 12px;
+}
+.langbox{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin:16px 0;
+}
+.lang{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:14px;
+}
+.lang h3{margin:0 0 8px;color:#155e75}
+.keybox{
+  background:#ecfeff;
+  border:1px solid #67e8f9;
+  border-left:5px solid #06b6d4;
+  border-radius:16px;
+  padding:14px;
+  margin:14px 0;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+}
+.pill{
+  background:white;
+  border:1px solid #a5f3fc;
+  border-radius:12px;
+  padding:9px 11px;
+  font-size:14px;
+}
+.q{
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:15px;
+  margin:13px 0;
+}
+.qtag{
+  display:inline-block;
+  font-size:12px;
+  font-weight:800;
+  color:#155e75;
+  background:#cffafe;
+  border-radius:999px;
+  padding:4px 9px;
+  margin-bottom:7px;
+}
+.qtitle{font-weight:800;margin-bottom:9px}
+.opt{
+  display:block;
+  margin:7px 0;
+  padding:10px 12px;
+  border-radius:12px;
+  background:#fafafa;
+  border:1px solid #f1f5f9;
+  cursor:pointer;
+}
+.btn{
+  border:0;
+  border-radius:15px;
+  background:linear-gradient(135deg,#0891b2,#14b8a6);
+  color:white;
+  font-size:15px;
+  font-weight:800;
+  padding:12px 20px;
+  cursor:pointer;
+}
+.summary,.ans{
+  border-radius:15px;
+  padding:14px;
+  margin:12px 0;
+  border:1px solid #e5e7eb;
+}
+.summary{background:#ecfeff;border-color:#67e8f9}
+.ok{background:#ecfdf5;border-color:#86efac}
+.bad{background:#fff1f2;border-color:#fecdd3}
+.oktxt{color:#15803d;font-weight:800}
+.badtxt{color:#be123c;font-weight:800}
+.ex{margin-top:7px;font-size:14px}
+.footer{text-align:center;color:#64748b;margin-top:28px;font-size:14px}
+
+@media(max-width:800px){
+  h1{font-size:29px}
+  .langbox{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .card{padding:17px}
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="book">CAE Exam Strategy</div>
+  <h1>Cambridge English Advanced<br>Super Short Practice Test Guide</h1>
+  <div class="subtitle">
+    Тек exam strategy: Reading & Use of English, Writing, Listening, Speaking бойынша ең керек нәрселер.
+  </div>
+  <div class="notice">
+    © @elnazm_ln<br>
+    Бұл авторлық жұмыс. Көшіруге, қайта сатуға және таратуға тыйым салынады.
+    <small>Это авторская работа. Копировать, перепродавать и распространять запрещено.</small>
+  </div>
+  <div class="source">
+    <b>Source:</b> CAE Practice Tests — Mark Harrison, Oxford
+  </div>
+</section>
+
+<nav class="nav" id="nav"></nav>
+<main class="wrap" id="app"></main>
+
+<script>
+const DATA = [
+{
+id:"b1",
+title:"1 — Reading & Use of English: Parts 1–2",
+desc:"Part 1 = multiple-choice vocabulary gaps. Part 2 = open cloze, one word only.",
+kazakh:`<h3>Қазақша</h3><p><b>Part 1</b>: collocation, phrasal verb, fixed phrase таңдайсың. <b>Part 2</b>: бір ғана сөз жазасың — көбіне grammar word: article, preposition, auxiliary, pronoun, linker.</p>`,
+russian:`<h3>Русский</h3><p><b>Part 1</b>: выбираешь точное слово по collocation/phrase. <b>Part 2</b>: пишешь одно слово — часто article, preposition, auxiliary, pronoun, linker.</p>`,
+mustknow:[
+"Part 1: check collocation.",
+"Part 1: read before and after gap.",
+"Part 2: ONE word only.",
+"Part 2: grammar words matter.",
+"Never write two words in Part 2."
+],
+questions:[
+{q:"CAE Part 1 mainly tests...",a:"vocabulary and collocations",options:["vocabulary and collocations","essay structure","listening detail","speaking fluency"],e:"Part 1 focuses on vocabulary choice, phrases and collocations."},
+{q:"In Part 2, how many words can you write?",a:"one",options:["one","two","three","as many as needed"],e:"Open cloze requires one word only."},
+{q:"Best strategy for Part 1?",a:"read both sides of the gap",options:["read both sides of the gap","choose the longest word","ignore context","translate only"],e:"Context before and after the gap decides the answer."},
+{q:"Which word type is common in Part 2?",a:"preposition",options:["preposition","full sentence","paragraph title","picture label"],e:"Open cloze often tests small grammar words."},
+{q:"What should you avoid in Part 2?",a:"writing two words",options:["writing two words","checking grammar","reading the sentence","using context"],e:"Only one word is allowed."}
+]
+},
+{
+id:"b2",
+title:"2 — Reading & Use of English: Parts 3–4",
+desc:"Part 3 = word formation. Part 4 = key word transformation.",
+kazakh:`<h3>Қазақша</h3><p><b>Part 3</b>: берілген сөзден дұрыс form жаса: noun, adjective, adverb, negative. <b>Part 4</b>: key word өзгермейді, 3–6 сөзбен meaning бірдей қыласың.</p>`,
+russian:`<h3>Русский</h3><p><b>Part 3</b>: меняешь форму слова. <b>Part 4</b>: key word нельзя менять; нужно сохранить meaning за 3–6 слов.</p>`,
+mustknow:[
+"Part 3: check word class.",
+"Need negative? possible → impossible.",
+"Part 4: do not change key word.",
+"Part 4: 3–6 words.",
+"Meaning must stay the same."
+],
+questions:[
+{q:"CAE Part 3 tests...",a:"word formation",options:["word formation","speaking speed","essay planning","photo comparison"],e:"Part 3 asks you to form the correct word."},
+{q:"In Part 4, the key word must...",a:"stay unchanged",options:["stay unchanged","be deleted","be translated","be shortened"],e:"You must not change the key word."},
+{q:"Part 4 answers usually contain...",a:"3 to 6 words",options:["3 to 6 words","one paragraph","one sentence only","ten words minimum"],e:"CAE transformation answers are limited."},
+{q:"What must stay the same in Part 4?",a:"meaning",options:["meaning","word order only","punctuation only","line length"],e:"The second sentence must mean the same as the first."},
+{q:"For Part 3, first decide the needed...",a:"word class",options:["word class","font","page number","speaker"],e:"You need noun, verb, adjective or adverb form."}
+]
+},
+{
+id:"b3",
+title:"3 — Reading Parts 5–8",
+desc:"Long reading: detail, opinion, implication, paragraph gaps, matching information.",
+kazakh:`<h3>Қазақша</h3><p>Reading-де answer text ішінде дәл сол сөзбен емес, <b>paraphrase</b> болып келеді. Opinion, attitude, implication, reference, text structure іздеу керек.</p>`,
+russian:`<h3>Русский</h3><p>В Reading ответ часто дан через <b>paraphrase</b>, не теми же словами. Ищи opinion, attitude, implication, reference and text structure.</p>`,
+mustknow:[
+"Answers are often paraphrased.",
+"Underline key words in questions.",
+"Check opinion vs fact.",
+"Paragraph gaps need linking.",
+"Part 8 = scan for specific information."
+],
+questions:[
+{q:"In CAE Reading, answers are often...",a:"paraphrased",options:["paraphrased","copied exactly","always in title","always first sentence"],e:"CAE often uses different words with the same meaning."},
+{q:"For paragraph gaps, focus on...",a:"links before and after the gap",options:["links before and after the gap","only the title","only the longest option","random order"],e:"Text cohesion decides the missing paragraph."},
+{q:"Part 8 is mainly about finding...",a:"specific information",options:["specific information","grammar errors","essay style","audio detail"],e:"Part 8 asks where information appears."},
+{q:"What is implication?",a:"meaning suggested but not directly stated",options:["meaning suggested but not directly stated","a direct quote only","a spelling rule","a title"],e:"Implication is hidden meaning based on evidence."},
+{q:"Best habit for Reading questions?",a:"underline key words",options:["underline key words","ignore options","read only answers","skip context"],e:"Key words help you locate and compare information."}
+]
+},
+  {
+id:"b4",
+title:"4 — Writing: Essay",
+desc:"Essay = discuss two points and say which is more important.",
+kazakh:`<h3>Қазақша</h3><p>Essay-де екі point талқыла. Opinion анық болсын. Introduction қысқа, 2 body paragraph, conclusion.</p>`,
+russian:`<h3>Русский</h3><p>В essay обсуди два пункта и выбери самый важный. Пиши ясно: intro, 2 body paragraphs, conclusion.</p>`,
+mustknow:[
+"Discuss two points.",
+"Give your opinion.",
+"Use your own words.",
+"Clear paragraphs.",
+"Conclusion = final answer."
+],
+questions:[
+{q:"In CAE essay, you should discuss...",a:"two points",options:["two points","all possible points","only one word","only examples"],e:"CAE essay asks you to discuss two points."},
+{q:"Your opinion should be...",a:"clear",options:["clear","hidden","missing","random"],e:"A clear final opinion is needed."},
+{q:"Best essay structure?",a:"introduction, body, conclusion",options:["introduction, body, conclusion","only one paragraph","only bullet points","no conclusion"],e:"This is the safest essay structure."},
+{q:"Should you copy the notes exactly?",a:"No, use your own words.",options:["No, use your own words.","Yes, copy everything.","Only copy examples.","Never use notes."],e:"You may use ideas, but use your own words."},
+{q:"Conclusion should...",a:"summarize and give final view",options:["summarize and give final view","start a new topic","repeat all sentences","ask questions only"],e:"Conclusion gives the final position."}
+]
+},
+{
+id:"b5",
+title:"5 — Writing: Proposal / Report / Review",
+desc:"Know the purpose of each task type.",
+kazakh:`<h3>Қазақша</h3><p><b>Proposal</b> — suggestion. <b>Report</b> — facts + recommendation. <b>Review</b> — opinion + recommendation.</p>`,
+russian:`<h3>Русский</h3><p><b>Proposal</b> предлагает идею. <b>Report</b> даёт факты и рекомендации. <b>Review</b> оценивает и советует.</p>`,
+mustknow:[
+"Proposal = suggest and persuade.",
+"Report = facts + recommendations.",
+"Review = describe + judge.",
+"Use headings if useful.",
+"Always answer all points."
+],
+questions:[
+{q:"A proposal mainly...",a:"suggests a plan",options:["suggests a plan","tells a story","tests grammar","matches speakers"],e:"Proposal gives a plan or suggestion."},
+{q:"A report should include...",a:"facts and recommendations",options:["facts and recommendations","only jokes","only feelings","no structure"],e:"Report is factual and practical."},
+{q:"A review should include...",a:"opinion and recommendation",options:["opinion and recommendation","only dates","only grammar","no judgement"],e:"Review evaluates something."},
+{q:"Useful feature in proposal/report?",a:"headings",options:["headings","random paragraphs","no title","slang"],e:"Headings make the answer clear."},
+{q:"Most important writing rule?",a:"answer all points in the task",options:["answer all points in the task","write as much as possible","ignore the reader","copy the prompt"],e:"Task completion is essential."}
+]
+},
+{
+id:"b6",
+title:"6 — Listening",
+desc:"Listen for attitude, purpose, agreement and paraphrase.",
+kazakh:`<h3>Қазақша</h3><p>Listening-де exact words күтпе. Answer көбіне paraphrase болады. Speaker feeling, purpose, agreement ізде.</p>`,
+russian:`<h3>Русский</h3><p>В Listening не жди exact words. Ответ часто paraphrased. Лови attitude, purpose, agreement.</p>`,
+mustknow:[
+"Answers are paraphrased.",
+"Listen for attitude.",
+"Listen for purpose.",
+"Agreement may be indirect.",
+"Use second listening to confirm."
+],
+questions:[
+{q:"In Listening, answers are often...",a:"paraphrased",options:["paraphrased","shown on screen","always repeated exactly","written in title"],e:"Listening options often use different words."},
+{q:"Speaker attitude means...",a:"how the speaker feels",options:["how the speaker feels","where the speaker lives","the page number","the title"],e:"Attitude is feeling or opinion."},
+{q:"Purpose means...",a:"why the speaker says something",options:["why the speaker says something","how long the audio is","the grammar tense","the spelling"],e:"Purpose is the reason for speaking."},
+{q:"What should you do on second listening?",a:"confirm answers",options:["confirm answers","stop listening","change randomly","ignore notes"],e:"Second listening helps check details."},
+{q:"Agreement between speakers can be...",a:"indirect",options:["indirect","always obvious","always written","impossible"],e:"Speakers may agree without saying 'I agree'."}
+]
+},
+{
+id:"b7",
+title:"7 — Speaking",
+desc:"Compare, speculate, interact and decide.",
+kazakh:`<h3>Қазақша</h3><p>Speaking-де тек describe етпе. Compare, speculate, justify opinion, agree/disagree, negotiate decision керек.</p>`,
+russian:`<h3>Русский</h3><p>В Speaking не просто описывай. Нужно compare, speculate, justify, agree/disagree and make a decision.</p>`,
+mustknow:[
+"Compare, don’t only describe.",
+"Speculate: might / could / seems.",
+"Give reasons.",
+"Interact with partner.",
+"Reach a decision in Part 3."
+],
+questions:[
+{q:"In Speaking Part 2, you should mainly...",a:"compare and speculate",options:["compare and speculate","read aloud","write notes","translate words"],e:"Part 2 needs comparison and speculation."},
+{q:"Good speculation phrase?",a:"It might be...",options:["It might be...","It is 100%...","No idea.","Next question."],e:"Might helps speculate."},
+{q:"In Part 3, candidates should...",a:"interact and reach a decision",options:["interact and reach a decision","speak alone only","write an essay","ignore partner"],e:"Part 3 is collaborative decision-making."},
+{q:"Good agreeing phrase?",a:"I see your point.",options:["I see your point.","You are wrong always.","Stop talking.","Nothing."],e:"This is polite interaction."},
+{q:"Best speaking habit?",a:"give reasons for opinions",options:["give reasons for opinions","answer with one word","stay silent","memorize full speeches"],e:"Reasons improve answers."}
+]
+},
+{
+id:"b8",
+title:"8 — Timing and exam habits",
+desc:"Short practical rules for the whole CAE test.",
+kazakh:`<h3>Қазақша</h3><p>Уақытты бақыла. Бір сұрақта тұрып қалма. Барлық answer sheet дұрыс толтырылғанын тексер.</p>`,
+russian:`<h3>Русский</h3><p>Следи за временем. Не застревай на одном вопросе. Проверь answer sheet.</p>`,
+mustknow:[
+"Do not spend too long on one item.",
+"Guess if necessary.",
+"Transfer answers carefully.",
+"Check spelling in gap tasks.",
+"Always answer every question."
+],
+questions:[
+{q:"If you are stuck, you should...",a:"move on and return later",options:["move on and return later","stop the exam","delete all answers","wait"],e:"Time management is important."},
+{q:"In gap tasks, check...",a:"spelling",options:["spelling","font","colour","page size"],e:"Wrong spelling can lose the mark."},
+{q:"Should you leave blanks?",a:"No, answer every question.",options:["No, answer every question.","Yes, leave many blanks.","Only answer easy ones.","Skip final page."],e:"No penalty for trying."},
+{q:"Answer sheet should be...",a:"filled carefully",options:["filled carefully","ignored","decorated","left empty"],e:"Transfer mistakes cost marks."},
+{q:"Best exam habit?",a:"watch the time",options:["watch the time","panic","read slowly forever","copy random text"],e:"Timing affects all papers."}
+]
+},
+  ];
+
+function shuffle(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function norm(text){
+  return String(text||"")
+    .toLowerCase()
+    .replace(/\s+/g," ")
+    .replace(/[.,;:!?()«»"']/g,"")
+    .trim();
+}
+
+function render(){
+  const nav=document.getElementById("nav");
+  const app=document.getElementById("app");
+
+  nav.innerHTML=DATA.map((block,i)=>`
+    <a href="#${block.id}">${i+1}</a>
+  `).join("");
+
+  app.innerHTML=DATA.map((block,bi)=>{
+    const questionsHTML=block.questions.map((item,qi)=>{
+      item.options=shuffle(item.options);
+      item.correctIndex=item.options.findIndex(opt=>norm(opt)===norm(item.a));
+
+      return `
+        <div class="q">
+          <div class="qtag">CAE strategy test</div>
+          <div class="qtitle">${qi+1}. ${item.q}</div>
+          ${item.options.map((opt,oi)=>`
+            <label class="opt">
+              <input type="radio" name="b${bi}-q${qi}" value="${oi}">
+              ${String.fromCharCode(65+oi)}) ${opt}
+            </label>
+          `).join("")}
+        </div>
+      `;
+    }).join("");
+
+    return `
+      <section class="card" id="${block.id}">
+        <h2>${block.title}</h2>
+        <div class="desc">${block.desc}</div>
+
+        <div class="langbox">
+          <div class="lang">${block.kazakh}</div>
+          <div class="lang">${block.russian}</div>
+        </div>
+
+        <div class="keybox">
+          <h3>Must-know</h3>
+          <div class="grid">
+            ${block.mustknow.map(k=>`<div class="pill">${k}</div>`).join("")}
+          </div>
+        </div>
+
+        <h3 style="color:#155e75;margin-top:20px;">Test — 5 questions</h3>
+
+        ${questionsHTML}
+
+        <button class="btn" onclick="checkBlock(${bi})">
+          Нәтижені көрсету / Показать результат
+        </button>
+
+        <div class="result" id="result-${bi}"></div>
+      </section>
+    `;
+  }).join("") + `
+    <div class="footer">
+      Source: CAE Practice Tests — Mark Harrison, Oxford<br>
+      © @elnazm_ln
+    </div>
+  `;
+}
+
+function checkBlock(bi){
+  const block=DATA[bi];
+  const box=document.getElementById("result-"+bi);
+
+  let score=0;
+  let html="";
+
+  block.questions.forEach((item,qi)=>{
+    const selected=document.querySelector(`input[name="b${bi}-q${qi}"]:checked`);
+    const selectedIndex=selected ? Number(selected.value) : -1;
+    const ok=selectedIndex===item.correctIndex;
+
+    if(ok) score++;
+
+    const yourAnswer=selectedIndex>=0
+      ? `${String.fromCharCode(65+selectedIndex)}) ${item.options[selectedIndex]}`
+      : "Жауап таңдалмаған / Ответ не выбран";
+
+    const correctAnswer=`${String.fromCharCode(65+item.correctIndex)}) ${item.a}`;
+
+    html+=`
+      <div class="ans ${ok ? "ok" : "bad"}">
+        <div><b>${qi+1}. ${item.q}</b></div>
+
+        <div class="${ok ? "oktxt" : "badtxt"}">
+          ${ok ? "Дұрыс / Верно" : "Қате / Неверно"}
+        </div>
+
+        <div class="ex">
+          <b>Ваш ответ:</b><br>
+          ${yourAnswer}
+        </div>
+
+        <div class="ex">
+          <b>Правильный ответ:</b><br>
+          ${correctAnswer}
+        </div>
+
+        <div class="ex">
+          <b>Түсіндірме / Пояснение:</b><br>
+          ${item.e}
+        </div>
+      </div>
+    `;
+  });
+
+  const percent=Math.round(score/block.questions.length*100);
+
+  box.innerHTML=`
+    <div class="summary">
+      <h3>${score} / ${block.questions.length} дұрыс</h3>
+      <p>Результат: <b>${percent}%</b></p>
+    </div>
+    ${html}
+  `;
+
+  box.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+render();
+
+document.addEventListener("contextmenu",e=>e.preventDefault());
+document.addEventListener("dragstart",e=>e.preventDefault());
+
+document.addEventListener("keydown",function(e){
+  const k=e.key.toUpperCase();
+
+  if(
+    e.key==="F12" ||
+    (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(k)) ||
+    (e.ctrlKey && ["U","S","P","A","C"].includes(k))
+  ){
+    e.preventDefault();
+  }
+});
+</script>
+
+</body>
+</html>
