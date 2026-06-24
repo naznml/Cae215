@@ -237,8 +237,8 @@ body.lang-ru .langbox{grid-template-columns:1fr!important;}
   </div>
   <div class="notice">
     Â© @elnazm_ln<br>
-    ÐÒ±Ð» Ð°Ð²ÑÐ¾ÑÐ»ÑÒ Ð¶Ò±Ð¼ÑÑ. ÐÓ©ÑÑÑÑÐ³Ðµ, ÒÐ°Ð¹ÑÐ° ÑÐ°ÑÑÒÐ° Ð¶ÓÐ½Ðµ ÑÐ°ÑÐ°ÑÑÒÐ° ÑÑÐ¹ÑÐ¼ ÑÐ°Ð»ÑÐ½Ð°Ð´Ñ.
-    <small>Ð­ÑÐ¾ Ð°Ð²ÑÐ¾ÑÑÐºÐ°Ñ ÑÐ°Ð±Ð¾ÑÐ°. ÐÐ¾Ð¿Ð¸ÑÐ¾Ð²Ð°ÑÑ, Ð¿ÐµÑÐµÐ¿ÑÐ¾Ð´Ð°Ð²Ð°ÑÑ Ð¸ ÑÐ°ÑÐ¿ÑÐ¾ÑÑÑÐ°Ð½ÑÑÑ Ð·Ð°Ð¿ÑÐµÑÐµÐ½Ð¾.</small>
+    <span class="kz-only">ÐÒ±Ð» Ð°Ð²ÑÐ¾ÑÐ»ÑÒ Ð¶Ò±Ð¼ÑÑ. ÐÓ©ÑÑÑÑÐ³Ðµ, ÒÐ°Ð¹ÑÐ° ÑÐ°ÑÑÒÐ° Ð¶ÓÐ½Ðµ ÑÐ°ÑÐ°ÑÑÒÐ° ÑÑÐ¹ÑÐ¼ ÑÐ°Ð»ÑÐ½Ð°Ð´Ñ.</span>
+    <small class="ru-only">Ð­ÑÐ¾ Ð°Ð²ÑÐ¾ÑÑÐºÐ°Ñ ÑÐ°Ð±Ð¾ÑÐ°. ÐÐ¾Ð¿Ð¸ÑÐ¾Ð²Ð°ÑÑ, Ð¿ÐµÑÐµÐ¿ÑÐ¾Ð´Ð°Ð²Ð°ÑÑ Ð¸ ÑÐ°ÑÐ¿ÑÐ¾ÑÑÑÐ°Ð½ÑÑÑ Ð·Ð°Ð¿ÑÐµÑÐµÐ½Ð¾.</small>
   </div>
   <div class="source">
     <b>Source:</b> CAE Practice Tests â Mark Harrison, Oxford
@@ -251,6 +251,12 @@ body.lang-ru .langbox{grid-template-columns:1fr!important;}
 <script>
 
 /* KZ/RU DISPLAY SWITCH â DATA NOT CHANGED */
+
+/* STRICT SELECTED-LANGUAGE UI LABELS */
+function uiText(kz, ru){
+  return currentSiteLang && currentSiteLang() === 'ru' ? ru : kz;
+}
+
 function currentSiteLang(){
   return document.body.classList.contains('lang-ru') ? 'ru' : 'kz';
 }
@@ -559,7 +565,7 @@ function checkBlock(bi){
 
     const yourAnswer=selectedIndex>=0
       ? `${String.fromCharCode(65+selectedIndex)}) ${item.options[selectedIndex]}`
-      : "ÐÐ°ÑÐ°Ð¿ ÑÐ°Ò£Ð´Ð°Ð»Ð¼Ð°ÒÐ°Ð½ / ÐÑÐ²ÐµÑ Ð½Ðµ Ð²ÑÐ±ÑÐ°Ð½";
+      : uiText("ÐÐ°ÑÐ°Ð¿ ÑÐ°Ò£Ð´Ð°Ð»Ð¼Ð°ÒÐ°Ð½", "ÐÑÐ²ÐµÑ Ð½Ðµ Ð²ÑÐ±ÑÐ°Ð½");
 
     const correctAnswer=`${String.fromCharCode(65+item.correctIndex)}) ${item.a}`;
 
@@ -568,21 +574,21 @@ function checkBlock(bi){
         <div><b>${qi+1}. ${item.q}</b></div>
 
         <div class="${ok ? "oktxt" : "badtxt"}">
-          ${ok ? "ÐÒ±ÑÑÑ / ÐÐµÑÐ½Ð¾" : "ÒÐ°ÑÐµ / ÐÐµÐ²ÐµÑÐ½Ð¾"}
+          ${ok ? uiText("ÐÒ±ÑÑÑ", "ÐÐµÑÐ½Ð¾") : uiText("ÒÐ°ÑÐµ", "ÐÐµÐ²ÐµÑÐ½Ð¾")}
         </div>
 
         <div class="ex">
-          <b>ÐÐ°Ñ Ð¾ÑÐ²ÐµÑ:</b><br>
+          <b>${uiText("Ð¡ÑÐ·Ð´ÑÒ£ Ð¶Ð°ÑÐ°Ð±ÑÒ£ÑÐ·:", "ÐÐ°Ñ Ð¾ÑÐ²ÐµÑ:")}</b><br>
           ${yourAnswer}
         </div>
 
         <div class="ex">
-          <b>ÐÑÐ°Ð²Ð¸Ð»ÑÐ½ÑÐ¹ Ð¾ÑÐ²ÐµÑ:</b><br>
+          <b>${uiText("ÐÒ±ÑÑÑ Ð¶Ð°ÑÐ°Ð¿:", "ÐÑÐ°Ð²Ð¸Ð»ÑÐ½ÑÐ¹ Ð¾ÑÐ²ÐµÑ:")}</b><br>
           ${correctAnswer}
         </div>
 
         <div class="ex">
-          <b>Ð¢Ò¯ÑÑÐ½Ð´ÑÑÐ¼Ðµ / ÐÐ¾ÑÑÐ½ÐµÐ½Ð¸Ðµ:</b><br>
+          <b>${uiText("Ð¢Ò¯ÑÑÐ½Ð´ÑÑÐ¼Ðµ:", "ÐÐ¾ÑÑÐ½ÐµÐ½Ð¸Ðµ:")}</b><br>
           ${splitExplanationByLang(item.e)}
         </div>
       </div>
@@ -593,8 +599,8 @@ function checkBlock(bi){
 
   box.innerHTML=`
     <div class="summary">
-      <h3>${score} / ${block.questions.length} Ð´Ò±ÑÑÑ</h3>
-      <p>Ð ÐµÐ·ÑÐ»ÑÑÐ°Ñ: <b>${percent}%</b></p>
+      <h3>${score} / ${block.questions.length} ${uiText("Ð´Ò±ÑÑÑ", "Ð²ÐµÑÐ½Ð¾")}</h3>
+      <p>${uiText("ÐÓÑÐ¸Ð¶Ðµ:", "Ð ÐµÐ·ÑÐ»ÑÑÐ°Ñ:")} <b>${percent}%</b></p>
     </div>
     ${html}
   `;
