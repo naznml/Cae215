@@ -153,6 +153,30 @@ h2{margin:0;color:#155e75;font-size:25px}
   border:1px solid #f1f5f9;
   cursor:pointer;
 }
+.opt.correct-highlight{
+  background:#dcfce7;
+  border-color:#22c55e;
+  color:#14532d;
+  font-weight:800;
+}
+.opt.wrong-highlight{
+  background:#ffe4e6;
+  border-color:#fb7185;
+  color:#881337;
+}
+.q-feedback{
+  display:none;
+  border-radius:15px;
+  padding:14px;
+  margin-top:12px;
+  border:1px solid #e5e7eb;
+}
+.q-feedback.ok{display:block;background:#ecfdf5;border-color:#86efac;}
+.q-feedback.bad{display:block;background:#fff1f2;border-color:#fecdd3;}
+.correct-line{
+  color:#15803d;
+  font-weight:900;
+}
 .btn{
   border:0;
   border-radius:15px;
@@ -184,7 +208,7 @@ h2{margin:0;color:#155e75;font-size:25px}
   .card{padding:17px}
 }
 
-/* KZ/RU DISPLAY SWITCH — ORIGINAL CONTENT PRESERVED */
+/* KZ/RU DISPLAY SWITCH â ORIGINAL CONTENT PRESERVED */
 .lang-switch{
   position:fixed;
   right:14px;
@@ -224,8 +248,8 @@ body.lang-ru .langbox{grid-template-columns:1fr!important;}
 <body class="lang-kz">
 
 <div class="lang-switch" aria-label="Language switcher">
-  <button type="button" id="btnKz" class="active" onclick="setLang('kz')">ҚАЗ</button>
-  <button type="button" id="btnRu" onclick="setLang('ru')">РУС</button>
+  <button type="button" id="btnKz" class="active" onclick="setLang('kz')">ÒÐÐ</button>
+  <button type="button" id="btnRu" onclick="setLang('ru')">Ð Ð£Ð¡</button>
 </div>
 
 
@@ -233,16 +257,16 @@ body.lang-ru .langbox{grid-template-columns:1fr!important;}
   <div class="book">CAE Exam Strategy</div>
   <h1>Cambridge English Advanced<br> Practice Test Guide</h1>
   <div class="subtitle">
-    <span class="kz-only">CAE exam strategy: Reading & Use of English, Writing, Listening, Speaking бойынша ең керек нәрселер.</span>
-    <span class="ru-only">CAE exam strategy: самые важные правила по Reading & Use of English, Writing, Listening, Speaking.</span>
+    <span class="kz-only">CAE exam strategy: Reading & Use of English, Writing, Listening, Speaking Ð±Ð¾Ð¹ÑÐ½ÑÐ° ÐµÒ£ ÐºÐµÑÐµÐº Ð½ÓÑÑÐµÐ»ÐµÑ.</span>
+    <span class="ru-only">CAE exam strategy: ÑÐ°Ð¼ÑÐµ Ð²Ð°Ð¶Ð½ÑÐµ Ð¿ÑÐ°Ð²Ð¸Ð»Ð° Ð¿Ð¾ Reading & Use of English, Writing, Listening, Speaking.</span>
   </div>
   <div class="notice">
-    © @elnazm_ln<br>
-    <span class="kz-only">Бұл авторлық жұмыс. Көшіруге, қайта сатуға және таратуға тыйым салынады.</span>
-    <small class="ru-only">Это авторская работа. Копировать, перепродавать и распространять запрещено.</small>
+    Â© @elnazm_ln<br>
+    <span class="kz-only">ÐÒ±Ð» Ð°Ð²ÑÐ¾ÑÐ»ÑÒ Ð¶Ò±Ð¼ÑÑ. ÐÓ©ÑÑÑÑÐ³Ðµ, ÒÐ°Ð¹ÑÐ° ÑÐ°ÑÑÒÐ° Ð¶ÓÐ½Ðµ ÑÐ°ÑÐ°ÑÑÒÐ° ÑÑÐ¹ÑÐ¼ ÑÐ°Ð»ÑÐ½Ð°Ð´Ñ.</span>
+    <small class="ru-only">Ð­ÑÐ¾ Ð°Ð²ÑÐ¾ÑÑÐºÐ°Ñ ÑÐ°Ð±Ð¾ÑÐ°. ÐÐ¾Ð¿Ð¸ÑÐ¾Ð²Ð°ÑÑ, Ð¿ÐµÑÐµÐ¿ÑÐ¾Ð´Ð°Ð²Ð°ÑÑ Ð¸ ÑÐ°ÑÐ¿ÑÐ¾ÑÑÑÐ°Ð½ÑÑÑ Ð·Ð°Ð¿ÑÐµÑÐµÐ½Ð¾.</small>
   </div>
   <div class="source">
-    <b>Source:</b> CAE Practice Tests — Mark Harrison, Oxford
+    <b>Source:</b> CAE Practice Tests â Mark Harrison, Oxford
   </div>
 </section>
 
@@ -251,7 +275,7 @@ body.lang-ru .langbox{grid-template-columns:1fr!important;}
 
 <script>
 
-/* KZ/RU DISPLAY SWITCH — DATA NOT CHANGED */
+/* KZ/RU DISPLAY SWITCH â DATA NOT CHANGED */
 
 /* STRICT SELECTED-LANGUAGE UI LABELS */
 function uiText(kz, ru){
@@ -263,8 +287,8 @@ function currentSiteLang(){
 }
 function splitExplanationByLang(text){
   const s = String(text || '');
-  const kzMark = 'Қазақша:';
-  const ruMark = 'Русский:';
+  const kzMark = 'ÒÐ°Ð·Ð°ÒÑÐ°:';
+  const ruMark = 'Ð ÑÑÑÐºÐ¸Ð¹:';
   const kzIndex = s.indexOf(kzMark);
   const ruIndex = s.indexOf(ruMark);
 
@@ -284,6 +308,14 @@ function setLang(lang){
   if(ru) ru.classList.toggle('active', lang === 'ru');
   localStorage.setItem('siteLang', lang);
   document.querySelectorAll('.result').forEach(el=>{ el.innerHTML=''; });
+  document.querySelectorAll('.q-feedback').forEach(el=>{
+    el.className='q-feedback';
+    el.innerHTML='';
+    el.style.display='none';
+  });
+  document.querySelectorAll('.opt').forEach(el=>{
+    el.classList.remove('correct-highlight','wrong-highlight');
+  });
 }
 function markLanguageBoxes(){
   document.querySelectorAll('.langbox').forEach(box=>{
@@ -302,10 +334,10 @@ setTimeout(markLanguageBoxes, 500);
 const DATA = [
 {
 id:"b1",
-title:"1 — Reading & Use of English: Parts 1–2",
+title:"1 â Reading & Use of English: Parts 1â2",
 desc:"Part 1 = multiple-choice vocabulary gaps. Part 2 = open cloze, one word only.",
-kazakh:`<h3>Қазақша</h3><p><b>Part 1</b>: collocation, phrasal verb, fixed phrase таңдайсың. <b>Part 2</b>: бір ғана сөз жазасың — көбіне grammar word: article, preposition, auxiliary, pronoun, linker.</p>`,
-russian:`<h3>Русский</h3><p><b>Part 1</b>: выбираешь точное слово по collocation/phrase. <b>Part 2</b>: пишешь одно слово — часто article, preposition, auxiliary, pronoun, linker.</p>`,
+kazakh:`<h3>ÒÐ°Ð·Ð°ÒÑÐ°</h3><p><b>Part 1</b>: collocation, phrasal verb, fixed phrase ÑÐ°Ò£Ð´Ð°Ð¹ÑÑÒ£. <b>Part 2</b>: Ð±ÑÑ ÒÐ°Ð½Ð° ÑÓ©Ð· Ð¶Ð°Ð·Ð°ÑÑÒ£ â ÐºÓ©Ð±ÑÐ½Ðµ grammar word: article, preposition, auxiliary, pronoun, linker.</p>`,
+russian:`<h3>Ð ÑÑÑÐºÐ¸Ð¹</h3><p><b>Part 1</b>: Ð²ÑÐ±Ð¸ÑÐ°ÐµÑÑ ÑÐ¾ÑÐ½Ð¾Ðµ ÑÐ»Ð¾Ð²Ð¾ Ð¿Ð¾ collocation/phrase. <b>Part 2</b>: Ð¿Ð¸ÑÐµÑÑ Ð¾Ð´Ð½Ð¾ ÑÐ»Ð¾Ð²Ð¾ â ÑÐ°ÑÑÐ¾ article, preposition, auxiliary, pronoun, linker.</p>`,
 mustknow:[
 "Part 1: check collocation.",
 "Part 1: read before and after gap.",
@@ -314,40 +346,40 @@ mustknow:[
 "Never write two words in Part 2."
 ],
 questions:[
-{q:"CAE Part 1 mainly tests...",a:"vocabulary and collocations",options:["vocabulary and collocations","essay structure","listening detail","speaking fluency"],e:"Қазақша: Part 1 vocabulary choice, fixed phrase және collocation тексереді. Жауапты gap алдындағы және кейінгі контекст арқылы таңдау керек. Русский: Part 1 проверяет выбор vocabulary, fixed phrases и collocations. Ответ нужно выбирать по контексту до и после пропуска."},
-{q:"In Part 2, how many words can you write?",a:"one",options:["one","two","three","as many as needed"],e:"Қазақша: Open cloze бөлімінде әр gap үшін тек бір сөз жазылады. Екі сөз жазсаң, жауап дұрыс болмайды. Русский: В open cloze для каждого пропуска пишется только одно слово. Если написать два слова, ответ не засчитывается."},
-{q:"Best strategy for Part 1?",a:"read both sides of the gap",options:["read both sides of the gap","choose the longest word","ignore context","translate only"],e:"Қазақша: Gap алдындағы және кейінгі сөздер дұрыс жауапты анықтайды. Сондықтан толық sentence context оқу керек. Русский: Контекст до и после пропуска определяет правильный ответ. Поэтому нужно читать всё предложение."},
-{q:"Which word type is common in Part 2?",a:"preposition",options:["preposition","full sentence","paragraph title","picture label"],e:"Қазақша: Open cloze көбіне article, preposition, auxiliary, pronoun, linker сияқты grammar words тексереді. Русский: Open cloze часто проверяет маленькие grammar words: article, preposition, auxiliary, pronoun, linker."},
-{q:"What should you avoid in Part 2?",a:"writing two words",options:["writing two words","checking grammar","reading the sentence","using context"],e:"Қазақша: Бұл task-та тек бір сөз рұқсат. Екі сөз немесе phrase жазуға болмайды. Русский: В этом задании разрешено только одно слово. Два слова или phrase писать нельзя."}
+{q:"CAE Part 1 mainly tests...",a:"vocabulary and collocations",options:["vocabulary and collocations","essay structure","listening detail","speaking fluency"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Part 1 vocabulary choice, fixed phrase Ð¶ÓÐ½Ðµ collocation ÑÐµÐºÑÐµÑÐµÐ´Ñ. ÐÐ°ÑÐ°Ð¿ÑÑ gap Ð°Ð»Ð´ÑÐ½Ð´Ð°ÒÑ Ð¶ÓÐ½Ðµ ÐºÐµÐ¹ÑÐ½Ð³Ñ ÐºÐ¾Ð½ÑÐµÐºÑÑ Ð°ÑÒÑÐ»Ñ ÑÐ°Ò£Ð´Ð°Ñ ÐºÐµÑÐµÐº. Ð ÑÑÑÐºÐ¸Ð¹: Part 1 Ð¿ÑÐ¾Ð²ÐµÑÑÐµÑ Ð²ÑÐ±Ð¾Ñ vocabulary, fixed phrases Ð¸ collocations. ÐÑÐ²ÐµÑ Ð½ÑÐ¶Ð½Ð¾ Ð²ÑÐ±Ð¸ÑÐ°ÑÑ Ð¿Ð¾ ÐºÐ¾Ð½ÑÐµÐºÑÑÑ Ð´Ð¾ Ð¸ Ð¿Ð¾ÑÐ»Ðµ Ð¿ÑÐ¾Ð¿ÑÑÐºÐ°."},
+{q:"In Part 2, how many words can you write?",a:"one",options:["one","two","three","as many as needed"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Open cloze Ð±Ó©Ð»ÑÐ¼ÑÐ½Ð´Ðµ ÓÑ gap Ò¯ÑÑÐ½ ÑÐµÐº Ð±ÑÑ ÑÓ©Ð· Ð¶Ð°Ð·ÑÐ»Ð°Ð´Ñ. ÐÐºÑ ÑÓ©Ð· Ð¶Ð°Ð·ÑÐ°Ò£, Ð¶Ð°ÑÐ°Ð¿ Ð´Ò±ÑÑÑ Ð±Ð¾Ð»Ð¼Ð°Ð¹Ð´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Ð open cloze Ð´Ð»Ñ ÐºÐ°Ð¶Ð´Ð¾Ð³Ð¾ Ð¿ÑÐ¾Ð¿ÑÑÐºÐ° Ð¿Ð¸ÑÐµÑÑÑ ÑÐ¾Ð»ÑÐºÐ¾ Ð¾Ð´Ð½Ð¾ ÑÐ»Ð¾Ð²Ð¾. ÐÑÐ»Ð¸ Ð½Ð°Ð¿Ð¸ÑÐ°ÑÑ Ð´Ð²Ð° ÑÐ»Ð¾Ð²Ð°, Ð¾ÑÐ²ÐµÑ Ð½Ðµ Ð·Ð°ÑÑÐ¸ÑÑÐ²Ð°ÐµÑÑÑ."},
+{q:"Best strategy for Part 1?",a:"read both sides of the gap",options:["read both sides of the gap","choose the longest word","ignore context","translate only"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Gap Ð°Ð»Ð´ÑÐ½Ð´Ð°ÒÑ Ð¶ÓÐ½Ðµ ÐºÐµÐ¹ÑÐ½Ð³Ñ ÑÓ©Ð·Ð´ÐµÑ Ð´Ò±ÑÑÑ Ð¶Ð°ÑÐ°Ð¿ÑÑ Ð°Ð½ÑÒÑÐ°Ð¹Ð´Ñ. Ð¡Ð¾Ð½Ð´ÑÒÑÐ°Ð½ ÑÐ¾Ð»ÑÒ sentence context Ð¾ÒÑ ÐºÐµÑÐµÐº. Ð ÑÑÑÐºÐ¸Ð¹: ÐÐ¾Ð½ÑÐµÐºÑÑ Ð´Ð¾ Ð¸ Ð¿Ð¾ÑÐ»Ðµ Ð¿ÑÐ¾Ð¿ÑÑÐºÐ° Ð¾Ð¿ÑÐµÐ´ÐµÐ»ÑÐµÑ Ð¿ÑÐ°Ð²Ð¸Ð»ÑÐ½ÑÐ¹ Ð¾ÑÐ²ÐµÑ. ÐÐ¾ÑÑÐ¾Ð¼Ñ Ð½ÑÐ¶Ð½Ð¾ ÑÐ¸ÑÐ°ÑÑ Ð²ÑÑ Ð¿ÑÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ."},
+{q:"Which word type is common in Part 2?",a:"preposition",options:["preposition","full sentence","paragraph title","picture label"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Open cloze ÐºÓ©Ð±ÑÐ½Ðµ article, preposition, auxiliary, pronoun, linker ÑÐ¸ÑÒÑÑ grammar words ÑÐµÐºÑÐµÑÐµÐ´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Open cloze ÑÐ°ÑÑÐ¾ Ð¿ÑÐ¾Ð²ÐµÑÑÐµÑ Ð¼Ð°Ð»ÐµÐ½ÑÐºÐ¸Ðµ grammar words: article, preposition, auxiliary, pronoun, linker."},
+{q:"What should you avoid in Part 2?",a:"writing two words",options:["writing two words","checking grammar","reading the sentence","using context"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: ÐÒ±Ð» task-ÑÐ° ÑÐµÐº Ð±ÑÑ ÑÓ©Ð· ÑÒ±ÒÑÐ°Ñ. ÐÐºÑ ÑÓ©Ð· Ð½ÐµÐ¼ÐµÑÐµ phrase Ð¶Ð°Ð·ÑÒÐ° Ð±Ð¾Ð»Ð¼Ð°Ð¹Ð´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Ð ÑÑÐ¾Ð¼ Ð·Ð°Ð´Ð°Ð½Ð¸Ð¸ ÑÐ°Ð·ÑÐµÑÐµÐ½Ð¾ ÑÐ¾Ð»ÑÐºÐ¾ Ð¾Ð´Ð½Ð¾ ÑÐ»Ð¾Ð²Ð¾. ÐÐ²Ð° ÑÐ»Ð¾Ð²Ð° Ð¸Ð»Ð¸ phrase Ð¿Ð¸ÑÐ°ÑÑ Ð½ÐµÐ»ÑÐ·Ñ."}
 ]
 },
 {
 id:"b2",
-title:"2 — Reading & Use of English: Parts 3–4",
+title:"2 â Reading & Use of English: Parts 3â4",
 desc:"Part 3 = word formation. Part 4 = key word transformation.",
-kazakh:`<h3>Қазақша</h3><p><b>Part 3</b>: берілген сөзден дұрыс form жаса: noun, adjective, adverb, negative. <b>Part 4</b>: key word өзгермейді, 3–6 сөзбен meaning бірдей қыласың.</p>`,
-russian:`<h3>Русский</h3><p><b>Part 3</b>: меняешь форму слова. <b>Part 4</b>: key word нельзя менять; нужно сохранить meaning за 3–6 слов.</p>`,
+kazakh:`<h3>ÒÐ°Ð·Ð°ÒÑÐ°</h3><p><b>Part 3</b>: Ð±ÐµÑÑÐ»Ð³ÐµÐ½ ÑÓ©Ð·Ð´ÐµÐ½ Ð´Ò±ÑÑÑ form Ð¶Ð°ÑÐ°: noun, adjective, adverb, negative. <b>Part 4</b>: key word Ó©Ð·Ð³ÐµÑÐ¼ÐµÐ¹Ð´Ñ, 3â6 ÑÓ©Ð·Ð±ÐµÐ½ meaning Ð±ÑÑÐ´ÐµÐ¹ ÒÑÐ»Ð°ÑÑÒ£.</p>`,
+russian:`<h3>Ð ÑÑÑÐºÐ¸Ð¹</h3><p><b>Part 3</b>: Ð¼ÐµÐ½ÑÐµÑÑ ÑÐ¾ÑÐ¼Ñ ÑÐ»Ð¾Ð²Ð°. <b>Part 4</b>: key word Ð½ÐµÐ»ÑÐ·Ñ Ð¼ÐµÐ½ÑÑÑ; Ð½ÑÐ¶Ð½Ð¾ ÑÐ¾ÑÑÐ°Ð½Ð¸ÑÑ meaning Ð·Ð° 3â6 ÑÐ»Ð¾Ð².</p>`,
 mustknow:[
 "Part 3: check word class.",
-"Need negative? possible → impossible.",
+"Need negative? possible â impossible.",
 "Part 4: do not change key word.",
-"Part 4: 3–6 words.",
+"Part 4: 3â6 words.",
 "Meaning must stay the same."
 ],
 questions:[
-{q:"CAE Part 3 tests...",a:"word formation",options:["word formation","speaking speed","essay planning","photo comparison"],e:"Қазақша: Part 3 берілген root word-тен дұрыс word form жасауға арналған: noun, verb, adjective, adverb немесе negative form. Русский: Part 3 требует образовать правильную форму от root word: noun, verb, adjective, adverb или negative form."},
-{q:"In Part 4, the key word must...",a:"stay unchanged",options:["stay unchanged","be deleted","be translated","be shortened"],e:"Қазақша: Part 4-та key word өзгермейді. Оны сол күйінде қолдану керек. Русский: В Part 4 key word нельзя менять. Его нужно использовать в той же форме."},
-{q:"Part 4 answers usually contain...",a:"3 to 6 words",options:["3 to 6 words","one paragraph","one sentence only","ten words minimum"],e:"Қазақша: Key word transformation жауаптары әдетте 3–6 сөзбен шектеледі. Русский: Ответы в key word transformation обычно ограничены 3–6 словами."},
-{q:"What must stay the same in Part 4?",a:"meaning",options:["meaning","word order only","punctuation only","line length"],e:"Қазақша: Екінші sentence бірінші sentence-пен meaning жағынан бірдей болуы керек. Русский: Второе предложение должно сохранять тот же meaning, что и первое."},
-{q:"For Part 3, first decide the needed...",a:"word class",options:["word class","font","page number","speaker"],e:"Қазақша: Алдымен gap-қа қандай word class керек екенін анықта: noun, verb, adjective немесе adverb. Русский: Сначала определи, какой word class нужен в gap: noun, verb, adjective или adverb."}
+{q:"CAE Part 3 tests...",a:"word formation",options:["word formation","speaking speed","essay planning","photo comparison"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Part 3 Ð±ÐµÑÑÐ»Ð³ÐµÐ½ root word-ÑÐµÐ½ Ð´Ò±ÑÑÑ word form Ð¶Ð°ÑÐ°ÑÒÐ° Ð°ÑÐ½Ð°Ð»ÒÐ°Ð½: noun, verb, adjective, adverb Ð½ÐµÐ¼ÐµÑÐµ negative form. Ð ÑÑÑÐºÐ¸Ð¹: Part 3 ÑÑÐµÐ±ÑÐµÑ Ð¾Ð±ÑÐ°Ð·Ð¾Ð²Ð°ÑÑ Ð¿ÑÐ°Ð²Ð¸Ð»ÑÐ½ÑÑ ÑÐ¾ÑÐ¼Ñ Ð¾Ñ root word: noun, verb, adjective, adverb Ð¸Ð»Ð¸ negative form."},
+{q:"In Part 4, the key word must...",a:"stay unchanged",options:["stay unchanged","be deleted","be translated","be shortened"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Part 4-ÑÐ° key word Ó©Ð·Ð³ÐµÑÐ¼ÐµÐ¹Ð´Ñ. ÐÐ½Ñ ÑÐ¾Ð» ÐºÒ¯Ð¹ÑÐ½Ð´Ðµ ÒÐ¾Ð»Ð´Ð°Ð½Ñ ÐºÐµÑÐµÐº. Ð ÑÑÑÐºÐ¸Ð¹: Ð Part 4 key word Ð½ÐµÐ»ÑÐ·Ñ Ð¼ÐµÐ½ÑÑÑ. ÐÐ³Ð¾ Ð½ÑÐ¶Ð½Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÑ Ð² ÑÐ¾Ð¹ Ð¶Ðµ ÑÐ¾ÑÐ¼Ðµ."},
+{q:"Part 4 answers usually contain...",a:"3 to 6 words",options:["3 to 6 words","one paragraph","one sentence only","ten words minimum"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Key word transformation Ð¶Ð°ÑÐ°Ð¿ÑÐ°ÑÑ ÓÐ´ÐµÑÑÐµ 3â6 ÑÓ©Ð·Ð±ÐµÐ½ ÑÐµÐºÑÐµÐ»ÐµÐ´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: ÐÑÐ²ÐµÑÑ Ð² key word transformation Ð¾Ð±ÑÑÐ½Ð¾ Ð¾Ð³ÑÐ°Ð½Ð¸ÑÐµÐ½Ñ 3â6 ÑÐ»Ð¾Ð²Ð°Ð¼Ð¸."},
+{q:"What must stay the same in Part 4?",a:"meaning",options:["meaning","word order only","punctuation only","line length"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: ÐÐºÑÐ½ÑÑ sentence Ð±ÑÑÑÐ½ÑÑ sentence-Ð¿ÐµÐ½ meaning Ð¶Ð°ÒÑÐ½Ð°Ð½ Ð±ÑÑÐ´ÐµÐ¹ Ð±Ð¾Ð»ÑÑ ÐºÐµÑÐµÐº. Ð ÑÑÑÐºÐ¸Ð¹: ÐÑÐ¾ÑÐ¾Ðµ Ð¿ÑÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð´Ð¾Ð»Ð¶Ð½Ð¾ ÑÐ¾ÑÑÐ°Ð½ÑÑÑ ÑÐ¾Ñ Ð¶Ðµ meaning, ÑÑÐ¾ Ð¸ Ð¿ÐµÑÐ²Ð¾Ðµ."},
+{q:"For Part 3, first decide the needed...",a:"word class",options:["word class","font","page number","speaker"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: ÐÐ»Ð´ÑÐ¼ÐµÐ½ gap-ÒÐ° ÒÐ°Ð½Ð´Ð°Ð¹ word class ÐºÐµÑÐµÐº ÐµÐºÐµÐ½ÑÐ½ Ð°Ð½ÑÒÑÐ°: noun, verb, adjective Ð½ÐµÐ¼ÐµÑÐµ adverb. Ð ÑÑÑÐºÐ¸Ð¹: Ð¡Ð½Ð°ÑÐ°Ð»Ð° Ð¾Ð¿ÑÐµÐ´ÐµÐ»Ð¸, ÐºÐ°ÐºÐ¾Ð¹ word class Ð½ÑÐ¶ÐµÐ½ Ð² gap: noun, verb, adjective Ð¸Ð»Ð¸ adverb."}
 ]
 },
 {
 id:"b3",
-title:"3 — Reading Parts 5–8",
+title:"3 â Reading Parts 5â8",
 desc:"Long reading: detail, opinion, implication, paragraph gaps, matching information.",
-kazakh:`<h3>Қазақша</h3><p>Reading-де answer text ішінде дәл сол сөзбен емес, <b>paraphrase</b> болып келеді. Opinion, attitude, implication, reference, text structure іздеу керек.</p>`,
-russian:`<h3>Русский</h3><p>В Reading ответ часто дан через <b>paraphrase</b>, не теми же словами. Ищи opinion, attitude, implication, reference and text structure.</p>`,
+kazakh:`<h3>ÒÐ°Ð·Ð°ÒÑÐ°</h3><p>Reading-Ð´Ðµ answer text ÑÑÑÐ½Ð´Ðµ Ð´ÓÐ» ÑÐ¾Ð» ÑÓ©Ð·Ð±ÐµÐ½ ÐµÐ¼ÐµÑ, <b>paraphrase</b> Ð±Ð¾Ð»ÑÐ¿ ÐºÐµÐ»ÐµÐ´Ñ. Opinion, attitude, implication, reference, text structure ÑÐ·Ð´ÐµÑ ÐºÐµÑÐµÐº.</p>`,
+russian:`<h3>Ð ÑÑÑÐºÐ¸Ð¹</h3><p>Ð Reading Ð¾ÑÐ²ÐµÑ ÑÐ°ÑÑÐ¾ Ð´Ð°Ð½ ÑÐµÑÐµÐ· <b>paraphrase</b>, Ð½Ðµ ÑÐµÐ¼Ð¸ Ð¶Ðµ ÑÐ»Ð¾Ð²Ð°Ð¼Ð¸. ÐÑÐ¸ opinion, attitude, implication, reference and text structure.</p>`,
 mustknow:[
 "Answers are often paraphrased.",
 "Underline key words in questions.",
@@ -356,19 +388,19 @@ mustknow:[
 "Part 8 = scan for specific information."
 ],
 questions:[
-{q:"In CAE Reading, answers are often...",a:"paraphrased",options:["paraphrased","copied exactly","always in title","always first sentence"],e:"Қазақша: CAE Reading-де answer көбіне дәл сол сөзбен емес, paraphrase арқылы беріледі. Русский: В CAE Reading ответ часто даётся не теми же словами, а через paraphrase."},
-{q:"For paragraph gaps, focus on...",a:"links before and after the gap",options:["links before and after the gap","only the title","only the longest option","random order"],e:"Қазақша: Paragraph gap-та before/after links, pronouns, connectors және logical flow маңызды. Русский: В paragraph gap важны links before/after, pronouns, connectors и logical flow."},
-{q:"Part 8 is mainly about finding...",a:"specific information",options:["specific information","grammar errors","essay style","audio detail"],e:"Қазақша: Part 8 specific information қай text/section ішінде тұрғанын табуға арналған. Русский: Part 8 проверяет, где именно находится specific information в тексте/секции."},
-{q:"What is implication?",a:"meaning suggested but not directly stated",options:["meaning suggested but not directly stated","a direct quote only","a spelling rule","a title"],e:"Қазақша: Implication — тура айтылмаған, бірақ evidence арқылы түсінілетін meaning. Русский: Implication — смысл, который не сказан прямо, но понятен по evidence."},
-{q:"Best habit for Reading questions?",a:"underline key words",options:["underline key words","ignore options","read only answers","skip context"],e:"Қазақша: Key words underline жасау text ішінен relevant information табуға және options салыстыруға көмектеседі. Русский: Подчёркивание key words помогает найти relevant information и сравнить options."}
+{q:"In CAE Reading, answers are often...",a:"paraphrased",options:["paraphrased","copied exactly","always in title","always first sentence"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: CAE Reading-Ð´Ðµ answer ÐºÓ©Ð±ÑÐ½Ðµ Ð´ÓÐ» ÑÐ¾Ð» ÑÓ©Ð·Ð±ÐµÐ½ ÐµÐ¼ÐµÑ, paraphrase Ð°ÑÒÑÐ»Ñ Ð±ÐµÑÑÐ»ÐµÐ´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Ð CAE Reading Ð¾ÑÐ²ÐµÑ ÑÐ°ÑÑÐ¾ Ð´Ð°ÑÑÑÑ Ð½Ðµ ÑÐµÐ¼Ð¸ Ð¶Ðµ ÑÐ»Ð¾Ð²Ð°Ð¼Ð¸, Ð° ÑÐµÑÐµÐ· paraphrase."},
+{q:"For paragraph gaps, focus on...",a:"links before and after the gap",options:["links before and after the gap","only the title","only the longest option","random order"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Paragraph gap-ÑÐ° before/after links, pronouns, connectors Ð¶ÓÐ½Ðµ logical flow Ð¼Ð°Ò£ÑÐ·Ð´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Ð paragraph gap Ð²Ð°Ð¶Ð½Ñ links before/after, pronouns, connectors Ð¸ logical flow."},
+{q:"Part 8 is mainly about finding...",a:"specific information",options:["specific information","grammar errors","essay style","audio detail"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Part 8 specific information ÒÐ°Ð¹ text/section ÑÑÑÐ½Ð´Ðµ ÑÒ±ÑÒÐ°Ð½ÑÐ½ ÑÐ°Ð±ÑÒÐ° Ð°ÑÐ½Ð°Ð»ÒÐ°Ð½. Ð ÑÑÑÐºÐ¸Ð¹: Part 8 Ð¿ÑÐ¾Ð²ÐµÑÑÐµÑ, Ð³Ð´Ðµ Ð¸Ð¼ÐµÐ½Ð½Ð¾ Ð½Ð°ÑÐ¾Ð´Ð¸ÑÑÑ specific information Ð² ÑÐµÐºÑÑÐµ/ÑÐµÐºÑÐ¸Ð¸."},
+{q:"What is implication?",a:"meaning suggested but not directly stated",options:["meaning suggested but not directly stated","a direct quote only","a spelling rule","a title"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Implication â ÑÑÑÐ° Ð°Ð¹ÑÑÐ»Ð¼Ð°ÒÐ°Ð½, Ð±ÑÑÐ°Ò evidence Ð°ÑÒÑÐ»Ñ ÑÒ¯ÑÑÐ½ÑÐ»ÐµÑÑÐ½ meaning. Ð ÑÑÑÐºÐ¸Ð¹: Implication â ÑÐ¼ÑÑÐ», ÐºÐ¾ÑÐ¾ÑÑÐ¹ Ð½Ðµ ÑÐºÐ°Ð·Ð°Ð½ Ð¿ÑÑÐ¼Ð¾, Ð½Ð¾ Ð¿Ð¾Ð½ÑÑÐµÐ½ Ð¿Ð¾ evidence."},
+{q:"Best habit for Reading questions?",a:"underline key words",options:["underline key words","ignore options","read only answers","skip context"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Key words underline Ð¶Ð°ÑÐ°Ñ text ÑÑÑÐ½ÐµÐ½ relevant information ÑÐ°Ð±ÑÒÐ° Ð¶ÓÐ½Ðµ options ÑÐ°Ð»ÑÑÑÑÑÑÒÐ° ÐºÓ©Ð¼ÐµÐºÑÐµÑÐµÐ´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: ÐÐ¾Ð´ÑÑÑÐºÐ¸Ð²Ð°Ð½Ð¸Ðµ key words Ð¿Ð¾Ð¼Ð¾Ð³Ð°ÐµÑ Ð½Ð°Ð¹ÑÐ¸ relevant information Ð¸ ÑÑÐ°Ð²Ð½Ð¸ÑÑ options."}
 ]
 },
   {
 id:"b4",
-title:"4 — Writing: Essay",
+title:"4 â Writing: Essay",
 desc:"Essay = discuss two points and say which is more important.",
-kazakh:`<h3>Қазақша</h3><p>Essay-де екі point талқыла. Opinion анық болсын. Introduction қысқа, 2 body paragraph, conclusion.</p>`,
-russian:`<h3>Русский</h3><p>В essay обсуди два пункта и выбери самый важный. Пиши ясно: intro, 2 body paragraphs, conclusion.</p>`,
+kazakh:`<h3>ÒÐ°Ð·Ð°ÒÑÐ°</h3><p>Essay-Ð´Ðµ ÐµÐºÑ point ÑÐ°Ð»ÒÑÐ»Ð°. Opinion Ð°Ð½ÑÒ Ð±Ð¾Ð»ÑÑÐ½. Introduction ÒÑÑÒÐ°, 2 body paragraph, conclusion.</p>`,
+russian:`<h3>Ð ÑÑÑÐºÐ¸Ð¹</h3><p>Ð essay Ð¾Ð±ÑÑÐ´Ð¸ Ð´Ð²Ð° Ð¿ÑÐ½ÐºÑÐ° Ð¸ Ð²ÑÐ±ÐµÑÐ¸ ÑÐ°Ð¼ÑÐ¹ Ð²Ð°Ð¶Ð½ÑÐ¹. ÐÐ¸ÑÐ¸ ÑÑÐ½Ð¾: intro, 2 body paragraphs, conclusion.</p>`,
 mustknow:[
 "Discuss two points.",
 "Give your opinion.",
@@ -377,19 +409,19 @@ mustknow:[
 "Conclusion = final answer."
 ],
 questions:[
-{q:"In CAE essay, you should discuss...",a:"two points",options:["two points","all possible points","only one word","only examples"],e:"Қазақша: CAE essay-де екі point талқылап, қайсысы маңызды екенін айту керек. Русский: В CAE essay нужно обсудить два points и сказать, какой важнее."},
-{q:"Your opinion should be...",a:"clear",options:["clear","hidden","missing","random"],e:"Қазақша: Essay-де final opinion анық болуы керек, especially conclusion ішінде. Русский: В essay нужен ясный final opinion, особенно в conclusion."},
-{q:"Best essay structure?",a:"introduction, body, conclusion",options:["introduction, body, conclusion","only one paragraph","only bullet points","no conclusion"],e:"Қазақша: Ең қауіпсіз essay structure: introduction, body paragraphs және conclusion. Русский: Самая безопасная essay structure: introduction, body paragraphs и conclusion."},
-{q:"Should you copy the notes exactly?",a:"No, use your own words.",options:["No, use your own words.","Yes, copy everything.","Only copy examples.","Never use notes."],e:"Қазақша: Prompt-тағы ideas қолдануға болады, бірақ wording өз сөзіңмен болуы керек. Русский: Ideas из prompt использовать можно, но wording должен быть своими словами."},
-{q:"Conclusion should...",a:"summarize and give final view",options:["summarize and give final view","start a new topic","repeat all sentences","ask questions only"],e:"Қазақша: Conclusion негізгі ойды жинақтап, final position көрсетеді. Русский: Conclusion подводит итог и показывает final position."}
+{q:"In CAE essay, you should discuss...",a:"two points",options:["two points","all possible points","only one word","only examples"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: CAE essay-Ð´Ðµ ÐµÐºÑ point ÑÐ°Ð»ÒÑÐ»Ð°Ð¿, ÒÐ°Ð¹ÑÑÑÑ Ð¼Ð°Ò£ÑÐ·Ð´Ñ ÐµÐºÐµÐ½ÑÐ½ Ð°Ð¹ÑÑ ÐºÐµÑÐµÐº. Ð ÑÑÑÐºÐ¸Ð¹: Ð CAE essay Ð½ÑÐ¶Ð½Ð¾ Ð¾Ð±ÑÑÐ´Ð¸ÑÑ Ð´Ð²Ð° points Ð¸ ÑÐºÐ°Ð·Ð°ÑÑ, ÐºÐ°ÐºÐ¾Ð¹ Ð²Ð°Ð¶Ð½ÐµÐµ."},
+{q:"Your opinion should be...",a:"clear",options:["clear","hidden","missing","random"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Essay-Ð´Ðµ final opinion Ð°Ð½ÑÒ Ð±Ð¾Ð»ÑÑ ÐºÐµÑÐµÐº, especially conclusion ÑÑÑÐ½Ð´Ðµ. Ð ÑÑÑÐºÐ¸Ð¹: Ð essay Ð½ÑÐ¶ÐµÐ½ ÑÑÐ½ÑÐ¹ final opinion, Ð¾ÑÐ¾Ð±ÐµÐ½Ð½Ð¾ Ð² conclusion."},
+{q:"Best essay structure?",a:"introduction, body, conclusion",options:["introduction, body, conclusion","only one paragraph","only bullet points","no conclusion"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: ÐÒ£ ÒÐ°ÑÑÐ¿ÑÑÐ· essay structure: introduction, body paragraphs Ð¶ÓÐ½Ðµ conclusion. Ð ÑÑÑÐºÐ¸Ð¹: Ð¡Ð°Ð¼Ð°Ñ Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð°Ñ essay structure: introduction, body paragraphs Ð¸ conclusion."},
+{q:"Should you copy the notes exactly?",a:"No, use your own words.",options:["No, use your own words.","Yes, copy everything.","Only copy examples.","Never use notes."],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Prompt-ÑÐ°ÒÑ ideas ÒÐ¾Ð»Ð´Ð°Ð½ÑÒÐ° Ð±Ð¾Ð»Ð°Ð´Ñ, Ð±ÑÑÐ°Ò wording Ó©Ð· ÑÓ©Ð·ÑÒ£Ð¼ÐµÐ½ Ð±Ð¾Ð»ÑÑ ÐºÐµÑÐµÐº. Ð ÑÑÑÐºÐ¸Ð¹: Ideas Ð¸Ð· prompt Ð¸ÑÐ¿Ð¾Ð»ÑÐ·Ð¾Ð²Ð°ÑÑ Ð¼Ð¾Ð¶Ð½Ð¾, Ð½Ð¾ wording Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±ÑÑÑ ÑÐ²Ð¾Ð¸Ð¼Ð¸ ÑÐ»Ð¾Ð²Ð°Ð¼Ð¸."},
+{q:"Conclusion should...",a:"summarize and give final view",options:["summarize and give final view","start a new topic","repeat all sentences","ask questions only"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Conclusion Ð½ÐµÐ³ÑÐ·Ð³Ñ Ð¾Ð¹Ð´Ñ Ð¶Ð¸Ð½Ð°ÒÑÐ°Ð¿, final position ÐºÓ©ÑÑÐµÑÐµÐ´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Conclusion Ð¿Ð¾Ð´Ð²Ð¾Ð´Ð¸Ñ Ð¸ÑÐ¾Ð³ Ð¸ Ð¿Ð¾ÐºÐ°Ð·ÑÐ²Ð°ÐµÑ final position."}
 ]
 },
 {
 id:"b5",
-title:"5 — Writing: Proposal / Report / Review",
+title:"5 â Writing: Proposal / Report / Review",
 desc:"Know the purpose of each task type.",
-kazakh:`<h3>Қазақша</h3><p><b>Proposal</b> — suggestion. <b>Report</b> — facts + recommendation. <b>Review</b> — opinion + recommendation.</p>`,
-russian:`<h3>Русский</h3><p><b>Proposal</b> предлагает идею. <b>Report</b> даёт факты и рекомендации. <b>Review</b> оценивает и советует.</p>`,
+kazakh:`<h3>ÒÐ°Ð·Ð°ÒÑÐ°</h3><p><b>Proposal</b> â suggestion. <b>Report</b> â facts + recommendation. <b>Review</b> â opinion + recommendation.</p>`,
+russian:`<h3>Ð ÑÑÑÐºÐ¸Ð¹</h3><p><b>Proposal</b> Ð¿ÑÐµÐ´Ð»Ð°Ð³Ð°ÐµÑ Ð¸Ð´ÐµÑ. <b>Report</b> Ð´Ð°ÑÑ ÑÐ°ÐºÑÑ Ð¸ ÑÐµÐºÐ¾Ð¼ÐµÐ½Ð´Ð°ÑÐ¸Ð¸. <b>Review</b> Ð¾ÑÐµÐ½Ð¸Ð²Ð°ÐµÑ Ð¸ ÑÐ¾Ð²ÐµÑÑÐµÑ.</p>`,
 mustknow:[
 "Proposal = suggest and persuade.",
 "Report = facts + recommendations.",
@@ -398,19 +430,19 @@ mustknow:[
 "Always answer all points."
 ],
 questions:[
-{q:"A proposal mainly...",a:"suggests a plan",options:["suggests a plan","tells a story","tests grammar","matches speakers"],e:"Қазақша: Proposal негізгі мақсаты — plan немесе suggestion ұсыну және reader-ді сендіру. Русский: Цель proposal — предложить plan или suggestion и убедить reader."},
-{q:"A report should include...",a:"facts and recommendations",options:["facts and recommendations","only jokes","only feelings","no structure"],e:"Қазақша: Report facts, findings және practical recommendations береді. Русский: Report даёт facts, findings и practical recommendations."},
-{q:"A review should include...",a:"opinion and recommendation",options:["opinion and recommendation","only dates","only grammar","no judgement"],e:"Қазақша: Review бір нәрсені сипаттап, бағалап, recommendation береді. Русский: Review описывает, оценивает и даёт recommendation."},
-{q:"Useful feature in proposal/report?",a:"headings",options:["headings","random paragraphs","no title","slang"],e:"Қазақша: Proposal/report ішінде headings structure-ды анық әрі ыңғайлы етеді. Русский: В proposal/report headings делают structure ясной и удобной."},
-{q:"Most important writing rule?",a:"answer all points in the task",options:["answer all points in the task","write as much as possible","ignore the reader","copy the prompt"],e:"Қазақша: Барлық points жауапта қамтылуы керек. Бұл task achievement үшін маңызды. Русский: Все points задания должны быть раскрыты. Это важно для task achievement."}
+{q:"A proposal mainly...",a:"suggests a plan",options:["suggests a plan","tells a story","tests grammar","matches speakers"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Proposal Ð½ÐµÐ³ÑÐ·Ð³Ñ Ð¼Ð°ÒÑÐ°ÑÑ â plan Ð½ÐµÐ¼ÐµÑÐµ suggestion Ò±ÑÑÐ½Ñ Ð¶ÓÐ½Ðµ reader-Ð´Ñ ÑÐµÐ½Ð´ÑÑÑ. Ð ÑÑÑÐºÐ¸Ð¹: Ð¦ÐµÐ»Ñ proposal â Ð¿ÑÐµÐ´Ð»Ð¾Ð¶Ð¸ÑÑ plan Ð¸Ð»Ð¸ suggestion Ð¸ ÑÐ±ÐµÐ´Ð¸ÑÑ reader."},
+{q:"A report should include...",a:"facts and recommendations",options:["facts and recommendations","only jokes","only feelings","no structure"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Report facts, findings Ð¶ÓÐ½Ðµ practical recommendations Ð±ÐµÑÐµÐ´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Report Ð´Ð°ÑÑ facts, findings Ð¸ practical recommendations."},
+{q:"A review should include...",a:"opinion and recommendation",options:["opinion and recommendation","only dates","only grammar","no judgement"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Review Ð±ÑÑ Ð½ÓÑÑÐµÐ½Ñ ÑÐ¸Ð¿Ð°ÑÑÐ°Ð¿, Ð±Ð°ÒÐ°Ð»Ð°Ð¿, recommendation Ð±ÐµÑÐµÐ´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Review Ð¾Ð¿Ð¸ÑÑÐ²Ð°ÐµÑ, Ð¾ÑÐµÐ½Ð¸Ð²Ð°ÐµÑ Ð¸ Ð´Ð°ÑÑ recommendation."},
+{q:"Useful feature in proposal/report?",a:"headings",options:["headings","random paragraphs","no title","slang"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Proposal/report ÑÑÑÐ½Ð´Ðµ headings structure-Ð´Ñ Ð°Ð½ÑÒ ÓÑÑ ÑÒ£ÒÐ°Ð¹Ð»Ñ ÐµÑÐµÐ´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Ð proposal/report headings Ð´ÐµÐ»Ð°ÑÑ structure ÑÑÐ½Ð¾Ð¹ Ð¸ ÑÐ´Ð¾Ð±Ð½Ð¾Ð¹."},
+{q:"Most important writing rule?",a:"answer all points in the task",options:["answer all points in the task","write as much as possible","ignore the reader","copy the prompt"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: ÐÐ°ÑÐ»ÑÒ points Ð¶Ð°ÑÐ°Ð¿ÑÐ° ÒÐ°Ð¼ÑÑÐ»ÑÑ ÐºÐµÑÐµÐº. ÐÒ±Ð» task achievement Ò¯ÑÑÐ½ Ð¼Ð°Ò£ÑÐ·Ð´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: ÐÑÐµ points Ð·Ð°Ð´Ð°Ð½Ð¸Ñ Ð´Ð¾Ð»Ð¶Ð½Ñ Ð±ÑÑÑ ÑÐ°ÑÐºÑÑÑÑ. Ð­ÑÐ¾ Ð²Ð°Ð¶Ð½Ð¾ Ð´Ð»Ñ task achievement."}
 ]
 },
 {
 id:"b6",
-title:"6 — Listening",
+title:"6 â Listening",
 desc:"Listen for attitude, purpose, agreement and paraphrase.",
-kazakh:`<h3>Қазақша</h3><p>Listening-де exact words күтпе. Answer көбіне paraphrase болады. Speaker feeling, purpose, agreement ізде.</p>`,
-russian:`<h3>Русский</h3><p>В Listening не жди exact words. Ответ часто paraphrased. Лови attitude, purpose, agreement.</p>`,
+kazakh:`<h3>ÒÐ°Ð·Ð°ÒÑÐ°</h3><p>Listening-Ð´Ðµ exact words ÐºÒ¯ÑÐ¿Ðµ. Answer ÐºÓ©Ð±ÑÐ½Ðµ paraphrase Ð±Ð¾Ð»Ð°Ð´Ñ. Speaker feeling, purpose, agreement ÑÐ·Ð´Ðµ.</p>`,
+russian:`<h3>Ð ÑÑÑÐºÐ¸Ð¹</h3><p>Ð Listening Ð½Ðµ Ð¶Ð´Ð¸ exact words. ÐÑÐ²ÐµÑ ÑÐ°ÑÑÐ¾ paraphrased. ÐÐ¾Ð²Ð¸ attitude, purpose, agreement.</p>`,
 mustknow:[
 "Answers are paraphrased.",
 "Listen for attitude.",
@@ -419,40 +451,40 @@ mustknow:[
 "Use second listening to confirm."
 ],
 questions:[
-{q:"In Listening, answers are often...",a:"paraphrased",options:["paraphrased","shown on screen","always repeated exactly","written in title"],e:"Қазақша: Listening options көбіне audio-дағы exact words емес, paraphrase береді. Русский: Listening options часто используют paraphrase, а не exact words из audio."},
-{q:"Speaker attitude means...",a:"how the speaker feels",options:["how the speaker feels","where the speaker lives","the page number","the title"],e:"Қазақша: Speaker attitude — speaker-дің feeling немесе opinion білдіруі. Русский: Speaker attitude — это feeling или opinion говорящего."},
-{q:"Purpose means...",a:"why the speaker says something",options:["why the speaker says something","how long the audio is","the grammar tense","the spelling"],e:"Қазақша: Purpose — speaker не үшін айтып тұрғанын көрсетеді. Русский: Purpose показывает, зачем speaker говорит это."},
-{q:"What should you do on second listening?",a:"confirm answers",options:["confirm answers","stop listening","change randomly","ignore notes"],e:"Қазақша: Second listening answers тексеруге және details нақтылауға көмектеседі. Русский: Second listening помогает проверить answers и уточнить details."},
-{q:"Agreement between speakers can be...",a:"indirect",options:["indirect","always obvious","always written","impossible"],e:"Қазақша: Speakers agreement-ті тікелей “I agree” демей, indirect түрде білдіруі мүмкін. Русский: Speakers могут выразить agreement косвенно, не говоря прямо “I agree”."}
+{q:"In Listening, answers are often...",a:"paraphrased",options:["paraphrased","shown on screen","always repeated exactly","written in title"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Listening options ÐºÓ©Ð±ÑÐ½Ðµ audio-Ð´Ð°ÒÑ exact words ÐµÐ¼ÐµÑ, paraphrase Ð±ÐµÑÐµÐ´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Listening options ÑÐ°ÑÑÐ¾ Ð¸ÑÐ¿Ð¾Ð»ÑÐ·ÑÑÑ paraphrase, Ð° Ð½Ðµ exact words Ð¸Ð· audio."},
+{q:"Speaker attitude means...",a:"how the speaker feels",options:["how the speaker feels","where the speaker lives","the page number","the title"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Speaker attitude â speaker-Ð´ÑÒ£ feeling Ð½ÐµÐ¼ÐµÑÐµ opinion Ð±ÑÐ»Ð´ÑÑÑÑ. Ð ÑÑÑÐºÐ¸Ð¹: Speaker attitude â ÑÑÐ¾ feeling Ð¸Ð»Ð¸ opinion Ð³Ð¾Ð²Ð¾ÑÑÑÐµÐ³Ð¾."},
+{q:"Purpose means...",a:"why the speaker says something",options:["why the speaker says something","how long the audio is","the grammar tense","the spelling"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Purpose â speaker Ð½Ðµ Ò¯ÑÑÐ½ Ð°Ð¹ÑÑÐ¿ ÑÒ±ÑÒÐ°Ð½ÑÐ½ ÐºÓ©ÑÑÐµÑÐµÐ´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Purpose Ð¿Ð¾ÐºÐ°Ð·ÑÐ²Ð°ÐµÑ, Ð·Ð°ÑÐµÐ¼ speaker Ð³Ð¾Ð²Ð¾ÑÐ¸Ñ ÑÑÐ¾."},
+{q:"What should you do on second listening?",a:"confirm answers",options:["confirm answers","stop listening","change randomly","ignore notes"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Second listening answers ÑÐµÐºÑÐµÑÑÐ³Ðµ Ð¶ÓÐ½Ðµ details Ð½Ð°ÒÑÑÐ»Ð°ÑÒÐ° ÐºÓ©Ð¼ÐµÐºÑÐµÑÐµÐ´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Second listening Ð¿Ð¾Ð¼Ð¾Ð³Ð°ÐµÑ Ð¿ÑÐ¾Ð²ÐµÑÐ¸ÑÑ answers Ð¸ ÑÑÐ¾ÑÐ½Ð¸ÑÑ details."},
+{q:"Agreement between speakers can be...",a:"indirect",options:["indirect","always obvious","always written","impossible"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Speakers agreement-ÑÑ ÑÑÐºÐµÐ»ÐµÐ¹ âI agreeâ Ð´ÐµÐ¼ÐµÐ¹, indirect ÑÒ¯ÑÐ´Ðµ Ð±ÑÐ»Ð´ÑÑÑÑ Ð¼Ò¯Ð¼ÐºÑÐ½. Ð ÑÑÑÐºÐ¸Ð¹: Speakers Ð¼Ð¾Ð³ÑÑ Ð²ÑÑÐ°Ð·Ð¸ÑÑ agreement ÐºÐ¾ÑÐ²ÐµÐ½Ð½Ð¾, Ð½Ðµ Ð³Ð¾Ð²Ð¾ÑÑ Ð¿ÑÑÐ¼Ð¾ âI agreeâ."}
 ]
 },
 {
 id:"b7",
-title:"7 — Speaking",
+title:"7 â Speaking",
 desc:"Compare, speculate, interact and decide.",
-kazakh:`<h3>Қазақша</h3><p>Speaking-де тек describe етпе. Compare, speculate, justify opinion, agree/disagree, negotiate decision керек.</p>`,
-russian:`<h3>Русский</h3><p>В Speaking не просто описывай. Нужно compare, speculate, justify, agree/disagree and make a decision.</p>`,
+kazakh:`<h3>ÒÐ°Ð·Ð°ÒÑÐ°</h3><p>Speaking-Ð´Ðµ ÑÐµÐº describe ÐµÑÐ¿Ðµ. Compare, speculate, justify opinion, agree/disagree, negotiate decision ÐºÐµÑÐµÐº.</p>`,
+russian:`<h3>Ð ÑÑÑÐºÐ¸Ð¹</h3><p>Ð Speaking Ð½Ðµ Ð¿ÑÐ¾ÑÑÐ¾ Ð¾Ð¿Ð¸ÑÑÐ²Ð°Ð¹. ÐÑÐ¶Ð½Ð¾ compare, speculate, justify, agree/disagree and make a decision.</p>`,
 mustknow:[
-"Compare, don’t only describe.",
+"Compare, donât only describe.",
 "Speculate: might / could / seems.",
 "Give reasons.",
 "Interact with partner.",
 "Reach a decision in Part 3."
 ],
 questions:[
-{q:"In Speaking Part 2, you should mainly...",a:"compare and speculate",options:["compare and speculate","read aloud","write notes","translate words"],e:"Қазақша: Speaking Part 2-де суреттерді тек describe етпей, compare және speculate жасау керек. Русский: В Speaking Part 2 нужно не просто describe pictures, а compare и speculate."},
-{q:"Good speculation phrase?",a:"It might be...",options:["It might be...","It is 100%...","No idea.","Next question."],e:"Қазақша: Might phrase speculation жасауға көмектеседі, өйткені сен 100% certainty айтпайсың. Русский: Might помогает speculate, потому что ты не утверждаешь 100% certainty."},
-{q:"In Part 3, candidates should...",a:"interact and reach a decision",options:["interact and reach a decision","speak alone only","write an essay","ignore partner"],e:"Қазақша: Speaking Part 3 — partner-пен interaction жасап, decision-ға келу. Русский: Speaking Part 3 — это interaction с partner и совместное decision-making."},
-{q:"Good agreeing phrase?",a:"I see your point.",options:["I see your point.","You are wrong always.","Stop talking.","Nothing."],e:"Қазақша: “I see your point” — polite agreeing/partial agreement phrase. Русский: “I see your point” — polite phrase для agreeing или partial agreement."},
-{q:"Best speaking habit?",a:"give reasons for opinions",options:["give reasons for opinions","answer with one word","stay silent","memorize full speeches"],e:"Қазақша: Opinion айтқанда reason қосу answer сапасын көтереді. Русский: Если к opinion добавить reason, answer становится сильнее."}
+{q:"In Speaking Part 2, you should mainly...",a:"compare and speculate",options:["compare and speculate","read aloud","write notes","translate words"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Speaking Part 2-Ð´Ðµ ÑÑÑÐµÑÑÐµÑÐ´Ñ ÑÐµÐº describe ÐµÑÐ¿ÐµÐ¹, compare Ð¶ÓÐ½Ðµ speculate Ð¶Ð°ÑÐ°Ñ ÐºÐµÑÐµÐº. Ð ÑÑÑÐºÐ¸Ð¹: Ð Speaking Part 2 Ð½ÑÐ¶Ð½Ð¾ Ð½Ðµ Ð¿ÑÐ¾ÑÑÐ¾ describe pictures, Ð° compare Ð¸ speculate."},
+{q:"Good speculation phrase?",a:"It might be...",options:["It might be...","It is 100%...","No idea.","Next question."],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Might phrase speculation Ð¶Ð°ÑÐ°ÑÒÐ° ÐºÓ©Ð¼ÐµÐºÑÐµÑÐµÐ´Ñ, Ó©Ð¹ÑÐºÐµÐ½Ñ ÑÐµÐ½ 100% certainty Ð°Ð¹ÑÐ¿Ð°Ð¹ÑÑÒ£. Ð ÑÑÑÐºÐ¸Ð¹: Might Ð¿Ð¾Ð¼Ð¾Ð³Ð°ÐµÑ speculate, Ð¿Ð¾ÑÐ¾Ð¼Ñ ÑÑÐ¾ ÑÑ Ð½Ðµ ÑÑÐ²ÐµÑÐ¶Ð´Ð°ÐµÑÑ 100% certainty."},
+{q:"In Part 3, candidates should...",a:"interact and reach a decision",options:["interact and reach a decision","speak alone only","write an essay","ignore partner"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Speaking Part 3 â partner-Ð¿ÐµÐ½ interaction Ð¶Ð°ÑÐ°Ð¿, decision-ÒÐ° ÐºÐµÐ»Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Speaking Part 3 â ÑÑÐ¾ interaction Ñ partner Ð¸ ÑÐ¾Ð²Ð¼ÐµÑÑÐ½Ð¾Ðµ decision-making."},
+{q:"Good agreeing phrase?",a:"I see your point.",options:["I see your point.","You are wrong always.","Stop talking.","Nothing."],e:"ÒÐ°Ð·Ð°ÒÑÐ°: âI see your pointâ â polite agreeing/partial agreement phrase. Ð ÑÑÑÐºÐ¸Ð¹: âI see your pointâ â polite phrase Ð´Ð»Ñ agreeing Ð¸Ð»Ð¸ partial agreement."},
+{q:"Best speaking habit?",a:"give reasons for opinions",options:["give reasons for opinions","answer with one word","stay silent","memorize full speeches"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Opinion Ð°Ð¹ÑÒÐ°Ð½Ð´Ð° reason ÒÐ¾ÑÑ answer ÑÐ°Ð¿Ð°ÑÑÐ½ ÐºÓ©ÑÐµÑÐµÐ´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: ÐÑÐ»Ð¸ Ðº opinion Ð´Ð¾Ð±Ð°Ð²Ð¸ÑÑ reason, answer ÑÑÐ°Ð½Ð¾Ð²Ð¸ÑÑÑ ÑÐ¸Ð»ÑÐ½ÐµÐµ."}
 ]
 },
 {
 id:"b8",
-title:"8 — Timing and exam habits",
+title:"8 â Timing and exam habits",
 desc:"Short practical rules for the whole CAE test.",
-kazakh:`<h3>Қазақша</h3><p>Уақытты бақыла. Бір сұрақта тұрып қалма. Барлық answer sheet дұрыс толтырылғанын тексер.</p>`,
-russian:`<h3>Русский</h3><p>Следи за временем. Не застревай на одном вопросе. Проверь answer sheet.</p>`,
+kazakh:`<h3>ÒÐ°Ð·Ð°ÒÑÐ°</h3><p>Ð£Ð°ÒÑÑÑÑ Ð±Ð°ÒÑÐ»Ð°. ÐÑÑ ÑÒ±ÑÐ°ÒÑÐ° ÑÒ±ÑÑÐ¿ ÒÐ°Ð»Ð¼Ð°. ÐÐ°ÑÐ»ÑÒ answer sheet Ð´Ò±ÑÑÑ ÑÐ¾Ð»ÑÑÑÑÐ»ÒÐ°Ð½ÑÐ½ ÑÐµÐºÑÐµÑ.</p>`,
+russian:`<h3>Ð ÑÑÑÐºÐ¸Ð¹</h3><p>Ð¡Ð»ÐµÐ´Ð¸ Ð·Ð° Ð²ÑÐµÐ¼ÐµÐ½ÐµÐ¼. ÐÐµ Ð·Ð°ÑÑÑÐµÐ²Ð°Ð¹ Ð½Ð° Ð¾Ð´Ð½Ð¾Ð¼ Ð²Ð¾Ð¿ÑÐ¾ÑÐµ. ÐÑÐ¾Ð²ÐµÑÑ answer sheet.</p>`,
 mustknow:[
 "Do not spend too long on one item.",
 "Guess if necessary.",
@@ -461,11 +493,11 @@ mustknow:[
 "Always answer every question."
 ],
 questions:[
-{q:"If you are stuck, you should...",a:"move on and return later",options:["move on and return later","stop the exam","delete all answers","wait"],e:"Қазақша: Бір question-ға тым көп уақыт кетірмей, кейін қайта оралу дұрыс strategy. Русский: Не трать слишком много времени на один question; лучше вернуться позже."},
-{q:"In gap tasks, check...",a:"spelling",options:["spelling","font","colour","page size"],e:"Қазақша: Gap tasks-та spelling қате болса, answer дұрыс meaning болса да mark жоғалуы мүмкін. Русский: В gap tasks ошибка spelling может лишить mark даже при правильном meaning."},
-{q:"Should you leave blanks?",a:"No, answer every question.",options:["No, answer every question.","Yes, leave many blanks.","Only answer easy ones.","Skip final page."],e:"Қазақша: Blank қалдырма. Guess жасап көрген дұрыс, себебі blank mark бермейді. Русский: Не оставляй blank. Лучше guess, потому что blank точно не даст mark."},
-{q:"Answer sheet should be...",a:"filled carefully",options:["filled carefully","ignored","decorated","left empty"],e:"Қазақша: Answer sheet-ке answers мұқият transfer жасау керек, өйткені transfer mistakes marks жоғалтады. Русский: Answers нужно carefully transfer на answer sheet, потому что transfer mistakes стоят marks."},
-{q:"Best exam habit?",a:"watch the time",options:["watch the time","panic","read slowly forever","copy random text"],e:"Қазақша: Time бақылау барлық paper үшін маңызды, себебі бір section бүкіл result-қа әсер етеді. Русский: Time management важно для всех papers, потому что один section влияет на общий result."}
+{q:"If you are stuck, you should...",a:"move on and return later",options:["move on and return later","stop the exam","delete all answers","wait"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: ÐÑÑ question-ÒÐ° ÑÑÐ¼ ÐºÓ©Ð¿ ÑÐ°ÒÑÑ ÐºÐµÑÑÑÐ¼ÐµÐ¹, ÐºÐµÐ¹ÑÐ½ ÒÐ°Ð¹ÑÐ° Ð¾ÑÐ°Ð»Ñ Ð´Ò±ÑÑÑ strategy. Ð ÑÑÑÐºÐ¸Ð¹: ÐÐµ ÑÑÐ°ÑÑ ÑÐ»Ð¸ÑÐºÐ¾Ð¼ Ð¼Ð½Ð¾Ð³Ð¾ Ð²ÑÐµÐ¼ÐµÐ½Ð¸ Ð½Ð° Ð¾Ð´Ð¸Ð½ question; Ð»ÑÑÑÐµ Ð²ÐµÑÐ½ÑÑÑÑÑ Ð¿Ð¾Ð·Ð¶Ðµ."},
+{q:"In gap tasks, check...",a:"spelling",options:["spelling","font","colour","page size"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Gap tasks-ÑÐ° spelling ÒÐ°ÑÐµ Ð±Ð¾Ð»ÑÐ°, answer Ð´Ò±ÑÑÑ meaning Ð±Ð¾Ð»ÑÐ° Ð´Ð° mark Ð¶Ð¾ÒÐ°Ð»ÑÑ Ð¼Ò¯Ð¼ÐºÑÐ½. Ð ÑÑÑÐºÐ¸Ð¹: Ð gap tasks Ð¾ÑÐ¸Ð±ÐºÐ° spelling Ð¼Ð¾Ð¶ÐµÑ Ð»Ð¸ÑÐ¸ÑÑ mark Ð´Ð°Ð¶Ðµ Ð¿ÑÐ¸ Ð¿ÑÐ°Ð²Ð¸Ð»ÑÐ½Ð¾Ð¼ meaning."},
+{q:"Should you leave blanks?",a:"No, answer every question.",options:["No, answer every question.","Yes, leave many blanks.","Only answer easy ones.","Skip final page."],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Blank ÒÐ°Ð»Ð´ÑÑÐ¼Ð°. Guess Ð¶Ð°ÑÐ°Ð¿ ÐºÓ©ÑÐ³ÐµÐ½ Ð´Ò±ÑÑÑ, ÑÐµÐ±ÐµÐ±Ñ blank mark Ð±ÐµÑÐ¼ÐµÐ¹Ð´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: ÐÐµ Ð¾ÑÑÐ°Ð²Ð»ÑÐ¹ blank. ÐÑÑÑÐµ guess, Ð¿Ð¾ÑÐ¾Ð¼Ñ ÑÑÐ¾ blank ÑÐ¾ÑÐ½Ð¾ Ð½Ðµ Ð´Ð°ÑÑ mark."},
+{q:"Answer sheet should be...",a:"filled carefully",options:["filled carefully","ignored","decorated","left empty"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Answer sheet-ÐºÐµ answers Ð¼Ò±ÒÐ¸ÑÑ transfer Ð¶Ð°ÑÐ°Ñ ÐºÐµÑÐµÐº, Ó©Ð¹ÑÐºÐµÐ½Ñ transfer mistakes marks Ð¶Ð¾ÒÐ°Ð»ÑÐ°Ð´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Answers Ð½ÑÐ¶Ð½Ð¾ carefully transfer Ð½Ð° answer sheet, Ð¿Ð¾ÑÐ¾Ð¼Ñ ÑÑÐ¾ transfer mistakes ÑÑÐ¾ÑÑ marks."},
+{q:"Best exam habit?",a:"watch the time",options:["watch the time","panic","read slowly forever","copy random text"],e:"ÒÐ°Ð·Ð°ÒÑÐ°: Time Ð±Ð°ÒÑÐ»Ð°Ñ Ð±Ð°ÑÐ»ÑÒ paper Ò¯ÑÑÐ½ Ð¼Ð°Ò£ÑÐ·Ð´Ñ, ÑÐµÐ±ÐµÐ±Ñ Ð±ÑÑ section Ð±Ò¯ÐºÑÐ» result-ÒÐ° ÓÑÐµÑ ÐµÑÐµÐ´Ñ. Ð ÑÑÑÐºÐ¸Ð¹: Time management Ð²Ð°Ð¶Ð½Ð¾ Ð´Ð»Ñ Ð²ÑÐµÑ papers, Ð¿Ð¾ÑÐ¾Ð¼Ñ ÑÑÐ¾ Ð¾Ð´Ð¸Ð½ section Ð²Ð»Ð¸ÑÐµÑ Ð½Ð° Ð¾Ð±ÑÐ¸Ð¹ result."}
 ]
 },
   ];
@@ -483,7 +515,7 @@ function norm(text){
   return String(text||"")
     .toLowerCase()
     .replace(/\s+/g," ")
-    .replace(/[.,;:!?()«»"']/g,"")
+    .replace(/[.,;:!?()Â«Â»"']/g,"")
     .trim();
 }
 
@@ -501,15 +533,16 @@ function render(){
       item.correctIndex=item.options.findIndex(opt=>norm(opt)===norm(item.a));
 
       return `
-        <div class="q">
+        <div class="q" id="q-${bi}-${qi}">
           <div class="qtag">CAE strategy test</div>
           <div class="qtitle">${qi+1}. ${item.q}</div>
           ${item.options.map((opt,oi)=>`
-            <label class="opt">
+            <label class="opt" data-bi="${bi}" data-qi="${qi}" data-oi="${oi}">
               <input type="radio" name="b${bi}-q${qi}" value="${oi}">
               ${String.fromCharCode(65+oi)}) ${opt}
             </label>
           `).join("")}
+          <div class="q-feedback" id="feedback-${bi}-${qi}"></div>
         </div>
       `;
     }).join("");
@@ -531,12 +564,12 @@ function render(){
           </div>
         </div>
 
-        <h3 style="color:#155e75;margin-top:20px;">Test — 5 questions</h3>
+        <h3 style="color:#155e75;margin-top:20px;">Test â 5 questions</h3>
 
         ${questionsHTML}
 
         <button class="btn" onclick="checkBlock(${bi})">
-          <span class="kz-only">Нәтижені көрсету</span><span class="ru-only">Показать результат</span>
+          <span class="kz-only">ÐÓÑÐ¸Ð¶ÐµÐ½Ñ ÐºÓ©ÑÑÐµÑÑ</span><span class="ru-only">ÐÐ¾ÐºÐ°Ð·Ð°ÑÑ ÑÐµÐ·ÑÐ»ÑÑÐ°Ñ</span>
         </button>
 
         <div class="result" id="result-${bi}"></div>
@@ -544,8 +577,8 @@ function render(){
     `;
   }).join("") + `
     <div class="footer">
-      <span class="kz-only">Дереккөз: CAE Practice Tests — Mark Harrison, Oxford<br>© @elnazm_ln</span>
-      <span class="ru-only">Источник: CAE Practice Tests — Mark Harrison, Oxford<br>© @elnazm_ln</span>
+      <span class="kz-only">ÐÐµÑÐµÐºÐºÓ©Ð·: CAE Practice Tests â Mark Harrison, Oxford<br>Â© @elnazm_ln</span>
+      <span class="ru-only">ÐÑÑÐ¾ÑÐ½Ð¸Ðº: CAE Practice Tests â Mark Harrison, Oxford<br>Â© @elnazm_ln</span>
     </div>
   `;
 }
@@ -555,7 +588,6 @@ function checkBlock(bi){
   const box=document.getElementById("result-"+bi);
 
   let score=0;
-  let html="";
 
   block.questions.forEach((item,qi)=>{
     const selected=document.querySelector(`input[name="b${bi}-q${qi}"]:checked`);
@@ -564,34 +596,42 @@ function checkBlock(bi){
 
     if(ok) score++;
 
+    document.querySelectorAll(`label[data-bi="${bi}"][data-qi="${qi}"]`).forEach(label=>{
+      label.classList.remove("correct-highlight","wrong-highlight");
+      const oi=Number(label.getAttribute("data-oi"));
+      if(oi===item.correctIndex) label.classList.add("correct-highlight");
+      if(selectedIndex>=0 && oi===selectedIndex && !ok) label.classList.add("wrong-highlight");
+    });
+
     const yourAnswer=selectedIndex>=0
       ? `${String.fromCharCode(65+selectedIndex)}) ${item.options[selectedIndex]}`
-      : uiText("Жауап таңдалмаған", "Ответ не выбран");
+      : uiText("ÐÐ°ÑÐ°Ð¿ ÑÐ°Ò£Ð´Ð°Ð»Ð¼Ð°ÒÐ°Ð½", "ÐÑÐ²ÐµÑ Ð½Ðµ Ð²ÑÐ±ÑÐ°Ð½");
 
-    const correctAnswer=`${String.fromCharCode(65+item.correctIndex)}) ${item.a}`;
+    const correctAnswer=`${String.fromCharCode(65+item.correctIndex)}) ${item.options[item.correctIndex]}`;
+    const feedback=document.getElementById(`feedback-${bi}-${qi}`);
 
-    html+=`
-      <div class="ans ${ok ? "ok" : "bad"}">
-        <div><b>${qi+1}. ${item.q}</b></div>
+    feedback.className=`q-feedback ${ok ? "ok" : "bad"}`;
+    feedback.style.display="block";
+    feedback.innerHTML=`
+      <div><b>${qi+1}. ${item.q}</b></div>
 
-        <div class="${ok ? "oktxt" : "badtxt"}">
-          ${ok ? uiText("Дұрыс", "Верно") : uiText("Қате", "Неверно")}
-        </div>
+      <div class="${ok ? "oktxt" : "badtxt"}">
+        ${ok ? uiText("ÐÒ±ÑÑÑ", "ÐÐµÑÐ½Ð¾") : uiText("ÒÐ°ÑÐµ", "ÐÐµÐ²ÐµÑÐ½Ð¾")}
+      </div>
 
-        <div class="ex">
-          <b>${uiText("Сіздің жауабыңыз:", "Ваш ответ:")}</b><br>
-          ${yourAnswer}
-        </div>
+      <div class="ex">
+        <b>${uiText("Ð¡ÑÐ·Ð´ÑÒ£ Ð¶Ð°ÑÐ°Ð±ÑÒ£ÑÐ·:", "ÐÐ°Ñ Ð¾ÑÐ²ÐµÑ:")}</b><br>
+        ${yourAnswer}
+      </div>
 
-        <div class="ex">
-          <b>${uiText("Дұрыс жауап:", "Правильный ответ:")}</b><br>
-          ${correctAnswer}
-        </div>
+      <div class="ex correct-line">
+        <b>${uiText("ÐÒ±ÑÑÑ Ð¶Ð°ÑÐ°Ð¿:", "ÐÑÐ°Ð²Ð¸Ð»ÑÐ½ÑÐ¹ Ð¾ÑÐ²ÐµÑ:")}</b><br>
+        ${correctAnswer}
+      </div>
 
-        <div class="ex">
-          <b>${uiText("Түсіндірме:", "Пояснение:")}</b><br>
-          ${splitExplanationByLang(item.e)}
-        </div>
+      <div class="ex">
+        <b>${uiText("Ð¢Ò¯ÑÑÐ½Ð´ÑÑÐ¼Ðµ:", "ÐÐ¾ÑÑÐ½ÐµÐ½Ð¸Ðµ:")}</b><br>
+        ${splitExplanationByLang(item.e)}
       </div>
     `;
   });
@@ -600,16 +640,18 @@ function checkBlock(bi){
 
   box.innerHTML=`
     <div class="summary">
-      <h3>${score} / ${block.questions.length} ${uiText("дұрыс", "верно")}</h3>
-      <p>${uiText("Нәтиже:", "Результат:")} <b>${percent}%</b></p>
+      <h3>${score} / ${block.questions.length} ${uiText("Ð´Ò±ÑÑÑ", "Ð²ÐµÑÐ½Ð¾")}</h3>
+      <p>${uiText("ÐÓÑÐ¸Ð¶Ðµ:", "Ð ÐµÐ·ÑÐ»ÑÑÐ°Ñ:")} <b>${percent}%</b></p>
     </div>
-    ${html}
   `;
 
-  box.scrollIntoView({
-    behavior:"smooth",
-    block:"start"
-  });
+  const firstQuestion=document.getElementById(`q-${bi}-0`);
+  if(firstQuestion){
+    firstQuestion.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+  }
 }
 
 render();
